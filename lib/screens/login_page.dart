@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:swipetune/utils/constants.dart';
 import 'package:swipetune/widgets/button/button_large.dart';
 import 'package:swipetune/widgets/button/button_outline_large.dart';
 import 'package:swipetune/widgets/login/logo.dart';
@@ -52,7 +53,7 @@ class LoginScreen extends StatelessWidget {
               ),
               Center(
                 child: Padding(
-                  padding: EdgeInsets.fromLTRB(42, 0, 42, 0),
+                  padding: sPadding(),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [

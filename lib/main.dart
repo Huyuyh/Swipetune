@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:swipetune/utils/constants.dart';
 import 'package:swipetune/utils/routes.dart';
 
 void main() {
@@ -16,7 +17,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Swipetune',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.lightBlue,
+        appBarTheme: sAppBarTheme(),
+        scaffoldBackgroundColor: const Color(0xfff5f5f5),
       ),
       initialRoute: Routes.getHomeRoute(),
       getPages: Routes.routes,
