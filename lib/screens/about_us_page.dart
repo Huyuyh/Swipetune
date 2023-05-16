@@ -15,44 +15,40 @@ class AboutUsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: SafeArea(
-        child: Container(
-          padding: sPadding(),
-          child: Column(
-            children: [
-              
-              Container(
-                height: 600,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "About Us",
-                      style: GoogleFonts.montserrat(
-                          color: Color(0xffFF7D87),
-                          fontSize: 32,
-                          fontWeight: FontWeight.w600),
-                    ),
-                    SizedBox(height: 20),
-                    AboutUs(),
-                    SizedBox(height: 20),
-                    Text(
-                      "Our vision",
-                      style: GoogleFonts.montserrat(
-                          color: Color(0xffFF7D87),
-                          fontSize: 20,
-                          fontWeight: FontWeight.w600),
-                    ),
-                    SizedBox(height: 20),
-                    OurVision(),
-                  ],
+      // appBar: AppBar(),
+      body: Container(
+        padding: sPadding(),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "About Us",
+                  style: GoogleFonts.montserrat(
+                      color: Color(0xffFF7D87),
+                      fontSize: 32,
+                      fontWeight: FontWeight.w600),
                 ),
-              ),
-                  Center(child: SolidButtonSmall(label: 'Next', color: Colors.pink,))
-          
-            ],
-          ),
+                SizedBox(height: 20),
+                AboutUs(),
+                SizedBox(height: 20),
+                Text(
+                  "Our vision",
+                  style: GoogleFonts.montserrat(
+                      color: Color(0xffFF7D87),
+                      fontSize: 20,
+                      fontWeight: FontWeight.w600),
+                ),
+                SizedBox(height: 20),
+                OurVision(),
+              ],
+            ),
+                Center(child: SolidButtonSmall(label: 'Next', color: Colors.pink,))
+
+          ],
         ),
       ),
     );
