@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:swipetune/utils/constants.dart';
 import 'package:swipetune/utils/routes.dart';
 
@@ -20,6 +21,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.lightBlue,
         appBarTheme: sAppBarTheme(),
         scaffoldBackgroundColor: const Color(0xfff5f5f5),
+        textTheme: GoogleFonts.montserratTextTheme(
+        )
       ),
       initialRoute: Routes.getHomeRoute(),
       getPages: Routes.routes,
