@@ -4,8 +4,12 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/widgets.dart';
 
 class Header extends StatelessWidget {
-  const Header({super.key});
+  Header(
+      {Key? key,
+      required this.title})
+      : super(key: key);
 
+  final String title;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,7 +21,7 @@ class Header extends StatelessWidget {
             child: Container(
               alignment: Alignment.centerLeft,
               child: Text(
-                'Sign in',
+                title,
                 style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
               ),
             ),

@@ -6,10 +6,9 @@ import 'package:swipetune/utils/constants.dart';
 import 'package:swipetune/widgets/login/custom_textfield_outline.dart';
 import 'package:swipetune/widgets/login/sign_in_bottom.dart';
 import 'package:swipetune/widgets/login/sign_in_header.dart';
-import 'package:swipetune/widgets/profile/custom_texfield.dart';
 
-class SignInScreen extends StatelessWidget {
-  const SignInScreen({super.key});
+class SignUpScreen extends StatelessWidget {
+  const SignUpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +29,7 @@ class SignInScreen extends StatelessWidget {
               height: 600,
               child: Column(
                 children: [
-                  Header(title: "Sign In"),
+                  Header(title: "Sign Up",),
                   SizedBox(
                     height: 20,
                   ),
@@ -43,28 +42,7 @@ class SignInScreen extends StatelessWidget {
                       hintText: "Type your password",
                       isObscure: true),
                   // SizedBox(height: 10),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Container(
-                            child: Checkbox(
-                              visualDensity: VisualDensity.compact,
-                              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                              value: false, // Replace with your checkbox logic
-                              onChanged: (value) {
-                                // Replace with your checkbox logic
-                              },
-                            ),
-                          ),
-                          Text("Remember Me"),
-                        ],
-                      ),
-                          Text("Forgot Me?"),
-            
-                    ],
-                  ),
+                  
                 ],
               ),
             ),
