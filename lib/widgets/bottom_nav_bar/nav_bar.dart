@@ -6,6 +6,7 @@ import "package:persistent_bottom_nav_bar/persistent_tab_view.dart";
 import 'package:swipetune/screens/home_page.dart';
 import 'package:swipetune/screens/my_library.dart';
 import 'package:swipetune/screens/profile_page.dart';
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 class RootScreen extends StatelessWidget {
   const RootScreen({Key? key, this.initPage}) : super(key: key);

@@ -4,6 +4,7 @@ import 'package:swipetune/screens/about_us_page.dart';
 import 'package:swipetune/screens/home_page.dart';
 import 'package:swipetune/screens/login_page.dart';
 import 'package:swipetune/screens/my_library.dart';
+import 'package:swipetune/screens/playlist_detail.dart';
 import 'package:swipetune/screens/profile_page.dart';
 import 'package:swipetune/screens/select_app.dart';
 import 'package:swipetune/screens/select_genre.dart';
@@ -22,6 +23,7 @@ class Routes {
   static const String _signIn = "/SignIn";
   static const String _signUp = "/SignUp";
   static const String _root = "/Root";
+  static const String _playListDetail = "/PlayListDetail";
 
   static String getHomeRoute() => _login;
   static String getSignInRoute() => _signIn;
@@ -30,6 +32,8 @@ class Routes {
   static String getLibraryRoute() => _library;
   static String getSignUpRoute() => _signUp;
   static String getRootRoute() => _root;
+  static String getPlayListDetail() => _playListDetail;
+
 
   
 
@@ -44,5 +48,7 @@ class Routes {
     GetPage(name: _library, page: () => MyLibrary()),
     GetPage(name: _signIn, page: () => SignInScreen()),
     GetPage(name: _signUp, page: () => SignUpScreen()),
+    GetPage(name: _playListDetail, page: () => PlayListDetailScreen()),
+
   ];
 }

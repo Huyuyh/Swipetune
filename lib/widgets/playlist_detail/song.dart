@@ -6,8 +6,8 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:swipetune/utils/routes.dart';
 
-class PlayList extends StatelessWidget {
-  const PlayList({super.key});
+class Song extends StatelessWidget {
+  const Song({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class PlayList extends StatelessWidget {
       padding: EdgeInsets.only(bottom: 10),
       child: GestureDetector(
         onTap: () {
-          Get.toNamed(Routes.getPlayListDetail());
+          // Get.toNamed(Routes.getPlayListDetail());
         },
         child: Card(
           shape: RoundedRectangleBorder(
@@ -40,12 +40,12 @@ class PlayList extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Playlist #1",
+                          "Song 1",
                           style: GoogleFonts.montserrat(
                               fontSize: 20, fontWeight: FontWeight.w600),
                         ),
                         Text(
-                          "60 songs",
+                          "singer 1",
                           style: GoogleFonts.montserrat(
                             fontSize: 12,
                           ),
