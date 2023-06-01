@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 PreferredSizeWidget LibraryAppBar() {
@@ -9,7 +10,9 @@ PreferredSizeWidget LibraryAppBar() {
       icon: Container(
         child: Icon(Icons.arrow_back),
       ),
-      onPressed: () {},
+      onPressed: () {
+        Get.back();
+      },
     ),
     title: Row(
       children: [

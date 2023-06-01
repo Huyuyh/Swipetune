@@ -3,7 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:get/get.dart';
 import 'package:swipetune/utils/constants.dart';
+import 'package:swipetune/utils/routes.dart';
 import 'package:swipetune/widgets/button/button_large.dart';
 import 'package:swipetune/widgets/button/button_outline_large.dart';
 import 'package:swipetune/widgets/login/logo.dart';
@@ -59,7 +61,11 @@ class LoginScreen extends StatelessWidget {
                     children: [
                       Logo(),
                       SizedBox(height: 20),
-                      SolidButtonLarge(label: "Sign up", color: Colors.pink),
+                      SolidButtonLarge(label: "Sign up", color: Colors.pink,
+                      onTap: () {
+                        Get.toNamed(Routes.getSignUpRoute());
+                      },
+                      ),
                       SizedBox(height: 20),
                       OutlineButtonLarge(
                         label: "Continue with phone number",
@@ -76,26 +82,15 @@ class LoginScreen extends StatelessWidget {
                         fontsize: 16,
                         iconData: FontAwesomeIcons.google
                       ),
-                      SizedBox(height: 20),
-                      OutlineButtonLarge(
-                        label: "Continue with apple",
-                        color: Colors.transparent,
-                        border: Border.all(color: Colors.white),
-                        fontsize: 16,
-                        iconData: Icons.apple
-                      ),
-                      SizedBox(height: 20),
-                      OutlineButtonLarge(
-                        label: "Continue with facebook",
-                        color: Colors.transparent,
-                        border: Border.all(color: Colors.white),
-                        fontsize: 16,
-                        iconData: Icons.facebook
-                      ),
+                      
+                      
                        OutlineButtonLarge(
                         label: "Log in",
                         color: Colors.transparent,
                         fontsize: 16,
+                         onTap: () {
+                        Get.toNamed(Routes.getSignInRoute());
+                      },
                       ),
                       SizedBox(height: 20),
 

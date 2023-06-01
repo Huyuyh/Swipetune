@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:swipetune/utils/constants.dart';
 import 'package:swipetune/widgets/button/button_small.dart';
@@ -22,7 +23,9 @@ class _SelectGenreScreenState extends State<SelectGenreScreen> {
           icon: Container(
             child: Icon(Icons.arrow_back),
           ),
-          onPressed: () {},
+          onPressed: () {
+            Get.back();
+          },
         ),
       ),
       body: SafeArea(

@@ -15,7 +15,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(),
+      appBar: AppBar(),
       body: SafeArea(
         child: GetBuilder<HomeController>(
           init: controller,
@@ -24,15 +24,12 @@ class HomeScreen extends StatelessWidget {
               padding: sPadding(),
               child: Column(
                 children: [
-                  SizedBox(
-                    height: 28,
-                  ),
-                  Container(
-                    child: MyAppBar(),
-                  ),
-                  SizedBox(
-                    height: 28,
-                  ),
+                  // SizedBox(
+                  //   height: 28,
+                  // ),
+                  // Container(
+                  //   child: MyAppBar(),
+                  // ),
                   Container(
                     height: 564,
                     child: ClipRRect(

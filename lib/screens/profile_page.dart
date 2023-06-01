@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:get/get.dart';
 import 'package:swipetune/utils/constants.dart';
 import 'package:swipetune/widgets/profile/avatar.dart';
 import 'package:swipetune/widgets/profile/custom_texfield.dart';
@@ -26,7 +27,9 @@ class ProfileScreen extends StatelessWidget {
           icon: Container(
             child: Icon(Icons.arrow_back),
           ),
-          onPressed: () {},
+          onPressed: () {
+            Get.back();
+          },
         ),
       ),
       body: Container(

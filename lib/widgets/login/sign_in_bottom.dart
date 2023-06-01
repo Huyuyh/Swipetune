@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
+import 'package:swipetune/utils/routes.dart';
 import 'package:swipetune/widgets/button/button_large.dart';
 
 class SignInBottom extends StatelessWidget {
@@ -12,7 +14,10 @@ class SignInBottom extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          SolidButtonLarge(label: "Sign In", color: Colors.pink),
+          SolidButtonLarge(label: "Sign In", color: Colors.pink, 
+          onTap: () {
+            Get.toNamed(Routes.getHomePageRoute());
+          },),
           SizedBox(height: 20,),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,

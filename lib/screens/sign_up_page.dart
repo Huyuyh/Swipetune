@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import 'package:swipetune/utils/constants.dart';
 import 'package:swipetune/widgets/login/custom_textfield_outline.dart';
 import 'package:swipetune/widgets/login/sign_in_bottom.dart';
@@ -18,7 +19,9 @@ class SignUpScreen extends StatelessWidget {
           icon: Container(
             child: Icon(Icons.arrow_back),
           ),
-          onPressed: () {},
+          onPressed: () {
+            Get.back();
+          },
         ),
       ),
       body: Container(
