@@ -12,15 +12,17 @@ class MyLibrary extends StatelessWidget {
     return Scaffold(
       appBar: LibraryAppBar(),
       body: Container(
-        child: Column(
-          children: [
-            Container(
-              padding: EdgeInsets.only(top: 42),
-              child: ListPlayList()),
-              Center(
-                child: Image.asset("assets/images/logo_premium.png"),
-              )
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                padding: EdgeInsets.only(top: 20),
+                child: ListPlayList()),
+                Center(
+                  child: Image.asset("assets/images/logo_premium.png"),
+                )
+            ],
+          ),
         ),
       ),
     );

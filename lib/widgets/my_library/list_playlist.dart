@@ -19,7 +19,6 @@ class ListPlayList extends StatelessWidget {
           PlayList(),
           PlayList(),
           PlayList(),
-
         ],
       ),
     );

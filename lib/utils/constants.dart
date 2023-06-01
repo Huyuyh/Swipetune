@@ -8,7 +8,7 @@ AppBarTheme sAppBarTheme() {
 }
 
 EdgeInsets sPadding() {
-  return EdgeInsets.fromLTRB(42, 0, 42, 0);
+  return EdgeInsets.fromLTRB(24, 0, 24, 0);
 }
 
  

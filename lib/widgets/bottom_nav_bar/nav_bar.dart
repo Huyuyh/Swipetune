@@ -24,14 +24,14 @@ class RootScreen extends StatelessWidget {
 
     List<PersistentBottomNavBarItem> _navBarsItems() => [
           PersistentBottomNavBarItem(
-            icon: const Icon(Icons.home),
+            icon: const Icon(Icons.home_filled),
             // title: "Home",
             activeColorPrimary: Colors.white,
             activeColorSecondary: Color(0xff31C9CE),
             inactiveColorPrimary: Colors.white,
           ),
           PersistentBottomNavBarItem(
-            icon: const Icon(Icons.view_list_sharp),
+            icon: const Icon(Icons.library_music),
             // title: "Wallet",
 
             activeColorPrimary: Colors.white,
