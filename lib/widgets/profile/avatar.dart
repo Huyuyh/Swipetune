@@ -10,8 +10,8 @@ class Avatar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        width: 136,
-        height: 136,
+        width: 122,
+        height: 122,
         child: CircleAvatar(
           backgroundImage: AssetImage("assets/images/avatar.png"),
         ),
