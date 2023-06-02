@@ -39,11 +39,18 @@ class HomeScreen extends StatelessWidget {
                         itemBuilder: (BuildContext context, int index) {
                           return Container(
                             alignment: Alignment.center,
-                            color: controller.swipeItems[index].content.color,
-                            child: Text(
-                              controller.swipeItems[index].content.text,
-                              style: TextStyle(fontSize: 100),
+                            decoration: BoxDecoration(
+                              color: controller.swipeItems[index].content.color,
+                              borderRadius: BorderRadius.circular(10),
+                              image: DecorationImage(
+                                image: AssetImage("assets/images/login_background_img.png"),
+                                fit: BoxFit.cover, // Set the desired fit mode
+                              ),
                             ),
+                            // child: Text(
+                            //   controller.swipeItems[index].content.text,
+                            //   style: TextStyle(fontSize: 100),
+                            // ),
                           );
                         },
                         onStackFinished: () {
@@ -115,9 +122,10 @@ class HomeScreen extends StatelessWidget {
                           child: Container(
                               width: 68,
                               height: 68,
-                              child: Image.asset("assets/images/like_icon.png")),
+                              child:
+                                  Image.asset("assets/images/like_icon.png")),
                         ),
-                        
+
                         // ElevatedButton.icon(
                         //   onPressed: controller.nope,
                         //   icon: Icon(Icons.thumb_down),

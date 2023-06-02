@@ -5,14 +5,14 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-PreferredSizeWidget PlayListDetailAppBar() {
+PreferredSizeWidget PlayListDetailAppBar(BuildContext context) {
   return AppBar(
     leading: IconButton(
       icon: Container(
         child: Icon(Icons.arrow_back),
       ),
       onPressed: () {
-        Get.back();
+        Navigator.pop(context);
       },
     ),
     centerTitle: true,

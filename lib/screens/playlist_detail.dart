@@ -12,7 +12,7 @@ class PlayListDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: PlayListDetailAppBar(),
+      appBar: PlayListDetailAppBar(context),
       body: Column(
         children: [
           Center(

@@ -4,6 +4,8 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:swipetune/screens/playlist_detail.dart';
 import 'package:swipetune/utils/routes.dart';
 
 class PlayList extends StatelessWidget {
@@ -15,7 +17,13 @@ class PlayList extends StatelessWidget {
       padding: EdgeInsets.only(bottom: 10),
       child: GestureDetector(
         onTap: () {
-          Get.toNamed(Routes.getPlayListDetail());
+          PersistentNavBarNavigator.pushNewScreen(
+            context,
+            screen: PlayListDetailScreen(),
+            withNavBar: true, // OPTIONAL VALUE. True by default.
+            pageTransitionAnimation: PageTransitionAnimation.cupertino,
+          );
+          // Get.toNamed(Routes.getPlayListDetail());
         },
         child: Card(
           shape: RoundedRectangleBorder(
