@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.montserratTextTheme(
         )
       ),
-      initialRoute: Routes.getRootRoute(),
+      initialRoute: Routes.getHomeRoute(),
       getPages: Routes.routes,
     );
   }
