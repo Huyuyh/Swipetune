@@ -25,7 +25,7 @@ class ApiService {
       );
       return response;
     } on DioError catch (e) {
-      throw new Exception(e);
+      throw Exception(e.response!.statusMessage);
     }
   }
 
@@ -44,7 +44,7 @@ class ApiService {
       );
       return response;
     } on DioError catch (e) {
-      throw new Exception(e);
+      throw Exception(e);
     }
   }
 

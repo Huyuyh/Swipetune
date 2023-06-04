@@ -49,7 +49,7 @@ class SignUpScreen extends StatelessWidget {
                 ],
               ),
             ),
-            SignInBottom()
+            // SignInBottom()
           ],
         ),
       ),

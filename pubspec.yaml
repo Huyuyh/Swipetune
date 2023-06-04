@@ -44,6 +44,9 @@ dependencies:
   spotify_sdk: ^2.3.1
   flutter_dotenv: ^5.1.0
   dio: ^4.0.6
+  jwt_decode: ^0.3.1
+  shared_preferences: ^2.1.1
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:

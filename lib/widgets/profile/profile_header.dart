@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
+import 'package:swipetune/utils/routes.dart';
+import 'package:swipetune/utils/share_pref.dart';
 import 'package:swipetune/widgets/button/button_small.dart';
 import 'package:swipetune/widgets/profile/avatar.dart';
 
@@ -13,8 +16,9 @@ class ProfileHeader extends StatelessWidget {
         child: Column(
       children: [
         Avatar(),
-        SizedBox(height: 10,),
-
+        SizedBox(
+          height: 10,
+        ),
         Text(
           "Pham Ho Minh Huy",
           style: TextStyle(
@@ -22,16 +26,26 @@ class ProfileHeader extends StatelessWidget {
               fontWeight: FontWeight.w700,
               color: Color(0xff565656)),
         ),
-        SizedBox(height: 10,),
-
+        SizedBox(
+          height: 10,
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             SolidButtonSmall(label: "Edit", color: Color(0xff7FEDF0)),
-            SolidButtonSmall(label: "Log out", color: Color(0xffFF7D87)),
+            SolidButtonSmall(
+              label: "Log out",
+              color: Color(0xffFF7D87),
+              onTap: () {
+                removeALL();
+                Get.toNamed(Routes.getStartUp());
+              },
+            ),
           ],
         ),
-        SizedBox(height: 20,),
+        SizedBox(
+          height: 20,
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
