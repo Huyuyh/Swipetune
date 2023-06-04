@@ -2,34 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/widgets.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:swipetune/screens/playlist_playing.dart';
-import 'package:swipetune/utils/routes.dart';
 
-class Song extends StatelessWidget {
-  const Song({super.key});
+class CardNextSong extends StatelessWidget {
+  const CardNextSong({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.only(bottom: 10),
-      child: GestureDetector(
-        onTap: () {
-          Get.bottomSheet(
-            isScrollControlled: true,
-                                  // enableDrag: false,
-            PlayListPlayingScreen()
-          );
-        },
-        child: Card(
+    return Card(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16.0),
           ),
-          color: Color.fromRGBO(236, 236, 236, 0.7),
+          color: Color.fromRGBO(128, 128, 128, 0.5),
           elevation: 0,
           child: Padding(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.fromLTRB(24, 14, 24, 14),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -39,7 +26,7 @@ class Song extends StatelessWidget {
                       padding: EdgeInsets.only(right: 9),
                       child: ClipRRect(
                           borderRadius: BorderRadius.circular(10),
-                          child: Image.asset("assets/images/playlist.png")),
+                          child: Image.asset("assets/images/song_1_image.png")),
                     ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -65,8 +52,6 @@ class Song extends StatelessWidget {
               ],
             ),
           ),
-        ),
-      ),
-    );
+        );
   }
 }

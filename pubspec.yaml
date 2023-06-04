@@ -41,6 +41,8 @@ dependencies:
   swipe_cards: ^2.0.0+1
   persistent_bottom_nav_bar: ^5.0.2
   curved_navigation_bar: ^1.0.3
+  spotify_sdk: ^2.3.1
+  flutter_dotenv: ^5.1.0
 
 dev_dependencies:
   flutter_test:
@@ -80,6 +82,11 @@ flutter:
     - assets/images/unlike_icon.png
     - assets/images/play_icon.png
     - assets/images/playlist.png
+    - assets/images/song_image.png
+    - assets/images/song_1_image.png
+    - assets/images/song_theme.png
+
+
 
 
   # assets:
