@@ -4,6 +4,7 @@ import 'package:jwt_decode/jwt_decode.dart';
 import 'package:swipetune/utils/share_pref.dart';
 
 class LoginDAO {
+
   Future<bool> isUserLoggedIn() async {
     // final isExpireToken = await expireAccount();
     final accountId = await getAccountID();
@@ -27,9 +28,8 @@ class LoginDAO {
 
       print(decode);
 
-      if (isRemember) {
-        setAccountId(decode["Id"]);
-      }
+      
+      setAccountId(decode["Id"]);
     } on Exception catch (e) {
       throw Exception(e);
     }

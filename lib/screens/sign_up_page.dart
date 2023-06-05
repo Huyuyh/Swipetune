@@ -14,6 +14,7 @@ class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         leading: IconButton(
           icon: Container(
@@ -32,7 +33,9 @@ class SignUpScreen extends StatelessWidget {
               height: 600,
               child: Column(
                 children: [
-                  Header(title: "Sign Up",),
+                  Header(
+                    title: "Sign Up",
+                  ),
                   SizedBox(
                     height: 20,
                   ),
@@ -40,12 +43,20 @@ class SignUpScreen extends StatelessWidget {
                     label: "Email",
                     hintText: "Type your email",
                   ),
+
                   CustomTextFieldOutline(
                       label: "Password",
                       hintText: "Type your password",
                       isObscure: true),
+                      CustomTextFieldOutline(
+                      label: "Confirm Password",
+                      hintText: "Type your password",
+                      isObscure: true),
+                  CustomTextFieldOutline(
+                    label: "Phone",
+                    hintText: "Type your phone",
+                  ),
                   // SizedBox(height: 10),
-                  
                 ],
               ),
             ),
