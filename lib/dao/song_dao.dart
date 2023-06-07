@@ -15,7 +15,7 @@ class SongDAO {
 
       return list;
     } catch (e) {
-      print(e);
+      throw Exception(e);
     }
     return null;
   }

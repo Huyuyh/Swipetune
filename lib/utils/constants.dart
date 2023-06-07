@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 AppBarTheme sAppBarTheme() {
   return AppBarTheme(
@@ -9,6 +10,11 @@ AppBarTheme sAppBarTheme() {
 
 EdgeInsets sPadding() {
   return EdgeInsets.fromLTRB(24, 0, 24, 0);
+}
+
+String formatDate(DateTime date) {
+  final formatter = DateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+  return formatter.format(date.toUtc());
 }
 
  

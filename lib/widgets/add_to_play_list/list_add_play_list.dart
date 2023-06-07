@@ -9,8 +9,8 @@ import 'package:swipetune/screens/playlist_detail.dart';
 import 'package:swipetune/utils/constants.dart';
 import 'package:swipetune/widgets/my_library/playlist.dart';
 
-class ListPlayList extends StatelessWidget {
-  ListPlayList({Key? key, this.songId}) : super(key: key);
+class ListAddToPlayList extends StatelessWidget {
+  ListAddToPlayList({Key? key, this.songId}) : super(key: key);
 
   final String? songId;
 
@@ -31,17 +31,12 @@ class ListPlayList extends StatelessWidget {
                 ...controller.playLists
                     .map((e) => PlayList(
                         playlist: e,
-                        onTap: () {
-                          PersistentNavBarNavigator.pushNewScreen(
-                            context,
-                            screen: PlayListDetailScreen(),
-                            withNavBar:
-                                true, // OPTIONAL VALUE. True by default.
-                            pageTransitionAnimation:
-                                PageTransitionAnimation.cupertino,
-                          );
-                          // Get.toNamed(Routes.getPlayListDetail());
-                        }))
+                        songId: songId,
+                        isAdd: true,
+                        // onTap: () {
+                        //   controller.addPlayList(songId, e.playlistId);
+                        // }
+                        ))
                     .toList()
               ],
             )),

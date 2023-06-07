@@ -5,26 +5,57 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:swipetune/controllers/add_play_list_controller.dart';
+import 'package:swipetune/models/play_list_model.dart';
 import 'package:swipetune/screens/playlist_detail.dart';
 import 'package:swipetune/utils/routes.dart';
 
-class PlayList extends StatelessWidget {
-  const PlayList({super.key});
+class PlayList extends StatefulWidget {
+  PlayList({Key? key, required this.playlist, this.onTap, this.songId, this.isAdd}): super(key: key);
+
+  final PlayListModel playlist;
+  final VoidCallback? onTap;
+  final String? songId; 
+  final bool? isAdd;
+
+
+  @override
+  State<PlayList> createState() => _PlayListState();
+}
+
+class _PlayListState extends State<PlayList> {
+
+  final AddPlayListController _controller = Get.put(AddPlayListController()); 
+
+  bool isAdded = false;
+
+
+  @override
+  void initState() {
+    super.initState();
+    if (widget.songId != null) {
+      isAdded = widget.playlist.playlistSongs!.any((song) => song.songId == widget.songId);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+
+    
+    return  Container(
       padding: EdgeInsets.only(bottom: 10),
       child: GestureDetector(
-        onTap: () {
-          PersistentNavBarNavigator.pushNewScreen(
-            context,
-            screen: PlayListDetailScreen(),
-            withNavBar: true, // OPTIONAL VALUE. True by default.
-            pageTransitionAnimation: PageTransitionAnimation.cupertino,
-          );
-          // Get.toNamed(Routes.getPlayListDetail());
-        },
+        onTap: widget.isAdd == null 
+          ?widget.onTap
+          :() {
+            setState(() {
+              if(!isAdded) {
+                isAdded = !isAdded;
+              }
+
+            });
+            _controller.togglePlayList(widget.playlist.playlistId);
+          },
         child: Card(
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16.0),
@@ -48,12 +79,12 @@ class PlayList extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Playlist #1",
+                          "${widget.playlist.name}",
                           style: GoogleFonts.montserrat(
                               fontSize: 20, fontWeight: FontWeight.w600),
                         ),
                         Text(
-                          "60 songs",
+                          "${widget.playlist.playlistSongs!.length} songs",
                           style: GoogleFonts.montserrat(
                             fontSize: 12,
                           ),
@@ -63,7 +94,9 @@ class PlayList extends StatelessWidget {
                   ],
                 ),
                 Container(
-                  child: Icon(Icons.more_vert),
+                  child: widget.isAdd == null 
+                  ? Icon(Icons.more_vert)
+                  : isAdded == true ? Icon(Icons.check_circle, color: Color(0xff31C9CE),) : Icon(Icons.circle_outlined, color: Color(0xff31C9CE)),
                 )
               ],
             ),

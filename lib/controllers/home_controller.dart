@@ -94,8 +94,6 @@ class HomeController extends GetxController {
       _isLoading.value = false;
     }
 
-
-
     super.onInit();
   }
 
@@ -108,21 +106,17 @@ class HomeController extends GetxController {
     super.onClose();
   }
 
-  
+  void makeApiCall(String url) async {
+    try {
+      final response = await Dio().get(url);
 
-void makeApiCall(String url) async {
-  try {
-    final response = await Dio().get(url);
-
-    // Process the response data as needed
-    print(response.data);
-  } catch (error) {
-    // Handle any errors
-    print('Error: $error');
+      // Process the response data as needed
+      print(response.data);
+    } catch (error) {
+      // Handle any errors
+      print('Error: $error');
+    }
   }
-}
-
-
 
   // Helper method to play a song using the Spotify SDK
   Future<void> playSong(String songUri) async {
@@ -134,15 +128,14 @@ void makeApiCall(String url) async {
     // await player.play();
 
     // final String url = 'https://accounts.spotify.com/authorize?client_id=64a2a8a63cb7433a8f8e5bc11f62e189&response_type=code&redirect_uri=http://18.141.188.211:7049/api/SpotifyAccount/callback&scope=playlist-modify-public user-read-private user-read-email playlist-read-collaborative playlist-read-private playlist-modify-private';
-    
+
     // makeApiCall(url);
 
     SongModel currentSong = matchEngine?.currentItem?.content;
-    await SpotifySdk.play(spotifyUri: 'spotify:track:${currentSong.songId.toString()}}');
+    await SpotifySdk.play(
+        spotifyUri: 'spotify:track:${currentSong.songId.toString()}}');
 
     // SpotifyService.connectToSpotifyRemote();
-
-
 
     // try {
     //   SongModel currentSong = matchEngine?.currentItem?.content;
@@ -194,9 +187,15 @@ void makeApiCall(String url) async {
   }
 
   void like() {
+    SongModel currentSong = matchEngine?.currentItem?.content;
     Get.bottomSheet(
-      isScrollControlled: true,
-      BottomSheetAddToPlayList());
+        isScrollControlled: true,
+        enableDrag: false,
+        BottomSheetAddToPlayList(songId: currentSong.songId));
     // matchEngine?.currentItem?.like();
+  }
+
+  void addSuccess() {
+    matchEngine?.currentItem?.like();
   }
 }

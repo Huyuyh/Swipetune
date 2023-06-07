@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:swipetune/dao/login_dao.dart';
+import 'package:swipetune/models/play_list_model.dart';
 import 'package:swipetune/utils/routes.dart';
 
 class StartUpController extends GetxController {
