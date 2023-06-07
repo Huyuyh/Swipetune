@@ -3,9 +3,13 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:swipetune/controllers/music_player_controller.dart';
+import 'package:swipetune/models/song_model.dart';
 
 class MusicPlayer extends GetView<MusicPlayerController> {
-  const MusicPlayer({super.key});
+  const MusicPlayer({Key? key, required this.song}) : super(key: key);
+
+  final SongModel song;
+
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +19,7 @@ class MusicPlayer extends GetView<MusicPlayerController> {
         // mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Slider(
+            
             activeColor: Colors.white,
             value: 0.5, // Replace with current position value
             onChanged: (double value) {

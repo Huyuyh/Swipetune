@@ -4,11 +4,14 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:swipetune/models/song_model.dart';
 import 'package:swipetune/screens/playlist_playing.dart';
 import 'package:swipetune/utils/routes.dart';
 
 class Song extends StatelessWidget {
-  const Song({super.key});
+  Song({Key? key, required this.song}) : super(key: key);
+
+  final SongModel song;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +22,7 @@ class Song extends StatelessWidget {
           Get.bottomSheet(
             isScrollControlled: true,
                                   // enableDrag: false,
-            PlayListPlayingScreen()
+            PlayListPlayingScreen(song: song,)
           );
         },
         child: Card(
@@ -33,31 +36,47 @@ class Song extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  children: [
-                    Container(
-                      padding: EdgeInsets.only(right: 9),
-                      child: ClipRRect(
-                          borderRadius: BorderRadius.circular(10),
-                          child: Image.asset("assets/images/playlist.png")),
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Song 1",
-                          style: GoogleFonts.montserrat(
-                              fontSize: 20, fontWeight: FontWeight.w600),
+                Expanded(
+                  child: Row(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.only(right: 9),
+                        child: Container(
+                          height: 69,
+                          width: 69,
+                          child: ClipRRect(
+                              borderRadius: BorderRadius.circular(10),
+                              child: Image.network("${song.songImgUrl}")),
                         ),
-                        Text(
-                          "singer 1",
-                          style: GoogleFonts.montserrat(
-                            fontSize: 12,
-                          ),
-                        )
-                      ],
-                    )
-                  ],
+                      ),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: Text(
+                                    "${song.songTitle}",
+                                     overflow: TextOverflow.ellipsis,
+                                     maxLines: 2,
+                                    style: GoogleFonts.montserrat(
+                                        fontSize: 20, fontWeight: FontWeight.w600),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Text(
+                              "${song.artist!.name}",
+                              style: GoogleFonts.montserrat(
+                                fontSize: 12,
+                              ),
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
                 ),
                 Container(
                   child: Icon(Icons.more_vert),

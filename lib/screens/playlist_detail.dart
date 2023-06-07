@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/widgets.dart';
+import 'package:swipetune/models/play_list_model.dart';
 import 'package:swipetune/widgets/bottom_nav_bar/music_player_bottom_nav_bar.dart';
 import 'package:swipetune/widgets/button/button_small.dart';
 import 'package:swipetune/widgets/playlist_detail/list_song.dart';
 import 'package:swipetune/widgets/playlist_detail/playlist_detail_app_bar.dart';
 
 class PlayListDetailScreen extends StatelessWidget {
-  const PlayListDetailScreen({super.key});
+  const PlayListDetailScreen({Key? key, this.playlist}) : super(key: key);
+
+  final PlayListModel? playlist;
 
   @override
   Widget build(BuildContext context) {
@@ -34,10 +37,10 @@ class PlayListDetailScreen extends StatelessWidget {
                   height: 10,
                 ),
                 Text(
-                  "Playlist 1",
+                  "${playlist!.name}",
                   style: TextStyle(fontSize: 28, fontWeight: FontWeight.w700),
                 ),
-                Text("47 songs . 3h for all", style: TextStyle(fontSize: 12)),
+                Text("${playlist!.playlistSongs!.length} songs", style: TextStyle(fontSize: 12)),
                 SizedBox(
                   height: 10,
                 ),
@@ -46,10 +49,10 @@ class PlayListDetailScreen extends StatelessWidget {
             ),
           ),
           SizedBox(height: 10,),
-          Expanded(child: SingleChildScrollView(child: ListSong()))
+          Expanded(child: SingleChildScrollView(child: ListSong(listId: playlist!.playlistId,)))
         ],
       ),
-      bottomNavigationBar: MusicPlayerBottomNavBar(),
+      // bottomNavigationBar: MusicPlayerBottomNavBar(),
     );
   }
 }

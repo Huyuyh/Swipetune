@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/widgets.dart';
+import 'package:intl/intl.dart';
+import 'package:swipetune/models/song_model.dart';
 
 class SongCardInfo extends StatelessWidget {
-  const SongCardInfo({super.key});
+  const SongCardInfo({Key? key, required this.song}) : super(key: key);
+
+  final SongModel song;
 
   @override
   Widget build(BuildContext context) {
@@ -25,63 +29,68 @@ class SongCardInfo extends StatelessWidget {
                   height: 69,
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage("assets/images/song_1_image.png"),
+                        image: NetworkImage("${song.songImgUrl}"),
                         fit: BoxFit.cover),
                   ),
                 ),
                 SizedBox(
                   width: 20,
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Column(
-                      children: [
-                        Text(
-                          "Song 1",
-                          style: TextStyle(
-                              color: Colors.white, fontWeight: FontWeight.w600),
-                        ),
-                        Text("Singer 1",
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "${song.songTitle}",
+                            overflow: TextOverflow.ellipsis,
                             style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w600),
+                          ),
+                          Text("${song.artist!.name}",
+                              style: TextStyle(
+                                  color: Color(0xffB8BEC1),
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w600))
+                        ],
+                      ),
+                      SizedBox(
+                        height: 24,
+                      ),
+                      Row(
+                        children: [
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.headphones_outlined,
+                                size: 16,
                                 color: Color(0xffB8BEC1),
-                                fontSize: 12,
-                                fontWeight: FontWeight.w600))
-                      ],
-                    ),
-                    SizedBox(
-                      height: 24,
-                    ),
-                    Row(
-                      children: [
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.headphones_outlined,
-                              size: 16,
-                              color: Color(0xffB8BEC1),
-                            ),
-                            Text("24k",
-                                style: TextStyle(color: Color(0xffB8BEC1))),
-                          ],
-                        ),
-                        SizedBox(
-                          width: 12,
-                        ),
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.favorite_border,
-                              size: 16,
-                              color: Color(0xffB8BEC1),
-                            ),
-                            Text("24k",
-                                style: TextStyle(color: Color(0xffB8BEC1))),
-                          ],
-                        )
-                      ],
-                    )
-                  ],
+                              ),
+                              Text("24k",
+                                  style: TextStyle(color: Color(0xffB8BEC1))),
+                            ],
+                          ),
+                          SizedBox(
+                            width: 12,
+                          ),
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.favorite_border,
+                                size: 16,
+                                color: Color(0xffB8BEC1),
+                              ),
+                              Text("24k",
+                                  style: TextStyle(color: Color(0xffB8BEC1))),
+                            ],
+                          )
+                        ],
+                      )
+                    ],
+                  ),
                 )
               ],
             ),
@@ -124,7 +133,7 @@ class SongCardInfo extends StatelessWidget {
                         height: 14,
                       ),
                       Text(
-                        "Produced",
+                        "Duration",
                         style: TextStyle(color: Color(0xffB8BEC1)),
                       ),
                     ],
@@ -133,45 +142,48 @@ class SongCardInfo extends StatelessWidget {
                 SizedBox(
                   width: 20,
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      height: 14,
-                    ),
-                    Text(
-                      "Album",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    SizedBox(
-                      height: 14,
-                    ),
-                    Text(
-                      "Musician 1",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    SizedBox(
-                      height: 14,
-                    ),
-                    Text(
-                      "K POP",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    SizedBox(
-                      height: 14,
-                    ),
-                    Text(
-                      "00/00/0000",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    SizedBox(
-                      height: 14,
-                    ),
-                    Text(
-                      "Production house 1",
-                      style: TextStyle(color: Colors.white),
-                    )
-                  ],
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        height: 14,
+                      ),
+                      Text(
+                        "Album",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      SizedBox(
+                        height: 14,
+                      ),
+                      Text(
+                        "Musician 1",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      SizedBox(
+                        height: 14,
+                      ),
+                      Text(
+                        "${song.artist!.artisGenres}",
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      SizedBox(
+                        height: 14,
+                      ),
+                      Text(
+                        "${DateFormat('dd-MM-yyyy').format(DateTime.parse(song.releaseDate.toString()))}",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      SizedBox(
+                        height: 14,
+                      ),
+                      Text(
+                        "${DateFormat('mm:ss').format(DateTime.parse("1970-01-01 "+song.duration.toString()))}",
+                        style: TextStyle(color: Colors.white),
+                      )
+                    ],
+                  ),
                 ),
               ],
             )

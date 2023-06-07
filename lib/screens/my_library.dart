@@ -26,7 +26,7 @@ class MyLibrary extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: MusicPlayerBottomNavBar()
+      // bottomNavigationBar: MusicPlayerBottomNavBar()
     );
   }
 }

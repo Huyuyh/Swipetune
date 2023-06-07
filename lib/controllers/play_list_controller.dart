@@ -42,7 +42,7 @@ class PlayListController extends GetxController {
         'Success',
         'Playlist added successfully.',
         duration: Duration(seconds: 2),
-        snackPosition: SnackPosition.BOTTOM,
+        snackPosition: SnackPosition.TOP,
       );
     } else {
       // Show error dialog using Get.dialog

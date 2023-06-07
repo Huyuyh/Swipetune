@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter/widgets.dart';
+import 'package:swipetune/models/song_model.dart';
 import 'package:swipetune/screens/playlist_playing_detail.dart';
 import 'package:swipetune/utils/constants.dart';
 import 'package:swipetune/widgets/playlist_playing/music_player.dart';
@@ -10,7 +11,9 @@ import 'package:swipetune/widgets/playlist_playing/playlist_playing_header.dart'
 import 'package:swipetune/widgets/playlist_playing/playlist_playing_song.dart';
 
 class PlayListPlayingScreen extends StatelessWidget {
-  const PlayListPlayingScreen({super.key});
+  const PlayListPlayingScreen({Key? key, required this.song}) : super(key: key);
+
+  final SongModel song;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +24,7 @@ class PlayListPlayingScreen extends StatelessWidget {
         body: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage("assets/images/song_theme.png"),
+                image: NetworkImage("${song.songImgUrl}"),
                 fit: BoxFit.cover),
             gradient: LinearGradient(
               begin: Alignment.topCenter,
@@ -88,8 +91,8 @@ class PlayListPlayingScreen extends StatelessWidget {
                                height: MediaQuery.of(context).size.height - kToolbarHeight - 50,
                               child: TabBarView(
                                 children: [
-                                  PlayListPlayingSong(), // First tab content
-                                  PlayListPlayingDetail(), // Second tab content
+                                  PlayListPlayingSong(song: song,), // First tab content
+                                  PlayListPlayingDetail(song: song), // Second tab content
                                 ],
                               ),
                             ),

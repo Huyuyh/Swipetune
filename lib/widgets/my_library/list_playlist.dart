@@ -34,7 +34,7 @@ class ListPlayList extends StatelessWidget {
                         onTap: () {
                           PersistentNavBarNavigator.pushNewScreen(
                             context,
-                            screen: PlayListDetailScreen(),
+                            screen: PlayListDetailScreen(playlist: e),
                             withNavBar:
                                 true, // OPTIONAL VALUE. True by default.
                             pageTransitionAnimation:
