@@ -29,10 +29,14 @@ class SolidButtonSmall extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             if (iconData == null) Container() else Icon(iconData),
-            Text(label, style: GoogleFonts.montserrat(
-              color: Colors.white,
-              fontSize: 20,
-            ),)
+            Flexible(
+              child: Text(
+                label, 
+              style: GoogleFonts.montserrat(
+                color: Colors.white,
+                fontSize: 20,
+              ),),
+            )
           ],
         ),
       ),

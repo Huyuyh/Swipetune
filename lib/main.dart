@@ -20,12 +20,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Swipetune',
       theme: ThemeData(
-        primarySwatch: Colors.lightBlue,
-        appBarTheme: sAppBarTheme(),
-        scaffoldBackgroundColor: const Color(0xfff5f5f5),
-        textTheme: GoogleFonts.montserratTextTheme(
-        )
-      ),
+          primarySwatch: Colors.lightBlue,
+          appBarTheme: sAppBarTheme(),
+          scaffoldBackgroundColor: const Color(0xfff5f5f5),
+          textTheme: GoogleFonts.montserratTextTheme()),
       initialRoute: Routes.getStartUp(),
       getPages: Routes.routes,
     );

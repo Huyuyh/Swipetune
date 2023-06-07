@@ -25,7 +25,7 @@ class RootScreen extends StatelessWidget {
     }
 
     List<PersistentBottomNavBarItem> _navBarsItems() => [
-          PersistentBottomNavBarItem(
+          PersistentBottomNavBarItem(            
             icon: const Icon(Icons.home_filled),
             activeColorPrimary: Colors.white,
             activeColorSecondary: Color(0xff31C9CE),
@@ -52,7 +52,7 @@ class RootScreen extends StatelessWidget {
       items: _navBarsItems(),
       resizeToAvoidBottomInset: true,
       confineInSafeArea: true,
-
+    
       backgroundColor: Color(0xffFF7D87), // Default is Colors.white.
       handleAndroidBackButtonPress:
           true, // Default is true. This needs to be true if you want to move up the screen when keyboard appears. Default is true.
@@ -61,13 +61,13 @@ class RootScreen extends StatelessWidget {
           true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
       decoration: NavBarDecoration(
         colorBehindNavBar: Colors.white,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.2),
-            blurRadius: 6.0,
-            offset: Offset(0, -3),
-          ),
-        ],
+        // boxShadow: [
+        //   BoxShadow(
+        //     color: Colors.black.withOpacity(0.2),
+        //     blurRadius: 6.0,
+        //     offset: Offset(0, -3),
+        //   ),
+        // ],
         // borderRadius: BorderRadius.only(
         //   topLeft: Radius.circular(30.0),
         //   topRight: Radius.circular(30.0),

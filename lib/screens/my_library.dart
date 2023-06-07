@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:swipetune/widgets/bottom_nav_bar/music_player_bottom_nav_bar.dart';
 import 'package:swipetune/widgets/my_library/library_app_bar.dart';
 import 'package:swipetune/widgets/my_library/list_playlist.dart';
 
@@ -25,6 +26,7 @@ class MyLibrary extends StatelessWidget {
           ),
         ),
       ),
+      bottomNavigationBar: MusicPlayerBottomNavBar()
     );
   }
 }

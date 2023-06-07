@@ -27,23 +27,23 @@ class StartUp extends StatelessWidget {
                         Image.asset(
                           'assets/images/logo_fill.png',
                         ),
-                        Text(
-                          'SWIPETUNE',
-                          style: GoogleFonts.raleway(
-                            color: Color(0xffFF7D87),
-                            fontSize: 48,
-                            fontWeight: FontWeight.w700,
-                            decoration: TextDecoration.none,
-                          ),
-                        ),
-                        Text('Music fun swipe',
-                            style: GoogleFonts.raleway(
-                              color: Color(0xffFF7D87),
-                              fontSize: 32,
-                              fontWeight: FontWeight.w700,
-                            decoration: TextDecoration.none,
+                        // Text(
+                        //   'SWIPETUNE',
+                        //   style: GoogleFonts.raleway(
+                        //     color: Color(0xffFF7D87),
+                        //     fontSize: 48,
+                        //     fontWeight: FontWeight.w700,
+                        //     decoration: TextDecoration.none,
+                        //   ),
+                        // ),
+                        // Text('Music fun swipe',
+                        //     style: GoogleFonts.raleway(
+                        //       color: Color(0xffFF7D87),
+                        //       fontSize: 32,
+                        //       fontWeight: FontWeight.w700,
+                        //     decoration: TextDecoration.none,
                               
-                            ))
+                        //     ))
                       ],
                     ),
                   )
