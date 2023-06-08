@@ -1,10 +1,11 @@
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:swipetune/services/request.dart';
 import 'package:jwt_decode/jwt_decode.dart';
+import 'package:swipetune/utils/constants.dart';
 import 'package:swipetune/utils/share_pref.dart';
 
 class LoginDAO {
-
   Future<bool> isUserLoggedIn() async {
     // final isExpireToken = await expireAccount();
     final accountId = await getAccountID();
@@ -28,8 +29,32 @@ class LoginDAO {
 
       print(decode);
 
-      
       setAccountId(decode["Id"]);
+    } on Exception catch (e) {
+      throw Exception(e);
+    }
+  }
+
+  Future<void> register(String email, String password, String phone) async {
+    String path = "/Account/register";
+
+    Map<String, String> account = {
+      "Email": email,
+      "Password": password,
+      "DOB": formatDate(DateTime.now()),
+      "Gender": "string",
+      "PhoneNumber": phone,
+      "Address": "string"
+    };
+
+    try {
+      final response = await ApiService.post(path, null, null, account);
+
+      // Map<String, dynamic> decode = Jwt.parseJwt(response.data["token"]);
+
+      // print(decode);
+
+      // setAccountId(decode["Id"]);
     } on Exception catch (e) {
       throw Exception(e);
     }

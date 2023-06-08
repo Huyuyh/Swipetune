@@ -7,9 +7,14 @@ import 'package:swipetune/utils/constants.dart';
 import 'package:swipetune/widgets/login/custom_textfield_outline.dart';
 import 'package:swipetune/widgets/login/sign_in_bottom.dart';
 import 'package:swipetune/widgets/login/sign_in_header.dart';
+import 'package:swipetune/widgets/login/sign_up_bottom.dart';
 
 class SignUpScreen extends StatelessWidget {
-  const SignUpScreen({super.key});
+  SignUpScreen({super.key});
+
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -42,25 +47,27 @@ class SignUpScreen extends StatelessWidget {
                   CustomTextFieldOutline(
                     label: "Email",
                     hintText: "Type your email",
+                    controller: _emailController,
                   ),
-
                   CustomTextFieldOutline(
                       label: "Password",
                       hintText: "Type your password",
-                      isObscure: true),
-                      CustomTextFieldOutline(
-                      label: "Confirm Password",
-                      hintText: "Type your password",
+                      controller: _passwordController,
                       isObscure: true),
                   CustomTextFieldOutline(
                     label: "Phone",
                     hintText: "Type your phone",
+                    controller: TextEditingController(),
                   ),
                   // SizedBox(height: 10),
                 ],
               ),
             ),
-            // SignInBottom()
+            SignUpBottom(
+              emailController: _emailController,
+              passwordController: _passwordController,
+              phoneController: _phoneController,
+            )
           ],
         ),
       ),

@@ -56,25 +56,25 @@ class SignInScreen extends StatelessWidget {
                       isObscure: true),
                   // SizedBox(height: 10),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Row(
-                        children: [
-                          Obx(() => Container(
-                                child: Checkbox(
-                                  visualDensity: VisualDensity.compact,
-                                  materialTapTargetSize:
-                                      MaterialTapTargetSize.shrinkWrap,
-                                  value: _loginController
-                                      .isRemember, // Replace with your checkbox logic
-                                  onChanged: (value) {
-                                    _loginController.checkRemember();
-                                  },
-                                ),
-                              )),
-                          Text("Remember Me"),
-                        ],
-                      ),
+                      // Row(
+                      //   children: [
+                      //     Obx(() => Container(
+                      //           child: Checkbox(
+                      //             visualDensity: VisualDensity.compact,
+                      //             materialTapTargetSize:
+                      //                 MaterialTapTargetSize.shrinkWrap,
+                      //             value: _loginController
+                      //                 .isRemember, // Replace with your checkbox logic
+                      //             onChanged: (value) {
+                      //               _loginController.checkRemember();
+                      //             },
+                      //           ),
+                      //         )),
+                      //     Text("Remember Me"),
+                      //   ],
+                      // ),
                       Text("Forgot Me?"),
                     ],
                   ),

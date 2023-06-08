@@ -12,6 +12,7 @@ class CustomTextFieldOutline extends StatelessWidget {
       required this.hintText,
       this.onTap,
       this.onChanged,
+      this.validateTextField,
       this.readOnly = false,
       this.focusNode,
       this.focused = false,
@@ -25,6 +26,8 @@ class CustomTextFieldOutline extends StatelessWidget {
   final String hintText;
   final VoidCallback? onTap;
   final void Function(String)? onChanged;
+  final String? Function(String?)? validateTextField;
+
   final bool? readOnly;
   final FocusNode? focusNode;
   final bool focused;
@@ -48,6 +51,13 @@ class CustomTextFieldOutline extends StatelessWidget {
     return null;
   }
 
+  String? _validateTextField(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter a value';
+    }
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -64,6 +74,7 @@ class CustomTextFieldOutline extends StatelessWidget {
           // style: kTextStyleBoldBlack(18),
           onTap: onTap,
           onChanged: onChanged,
+          validator: validateTextField ?? _validateTextField,
           decoration: InputDecoration(
             // contentPadding: const EdgeInsets.all(14),
             labelText: label,
