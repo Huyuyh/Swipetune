@@ -28,6 +28,10 @@ class HomeController extends GetxController {
 
   List<SongModel> songModels = <SongModel>[].obs;
 
+  final _currentSong = SongModel().obs;
+
+
+
   MatchEngine? matchEngine;
 
   final SongDAO songDAO = SongDAO();
@@ -37,6 +41,7 @@ class HomeController extends GetxController {
   // StreamSubscription<PlayerState>? _playerStateSubscription;
 
   bool get isLoading => _isLoading.value;
+  SongModel get currentSong => _currentSong.value;
 
   @override
   void onInit() async {
@@ -197,5 +202,19 @@ class HomeController extends GetxController {
 
   void addSuccess() {
     matchEngine?.currentItem?.like();
+  }
+
+  // New Swipe card
+
+
+  void setCurrentSong(SongModel song) {
+    _currentSong.value = song;
+  }
+  
+  void addToList() {
+    Get.bottomSheet(
+        isScrollControlled: true,
+        enableDrag: false,
+        BottomSheetAddToPlayList(songId: _currentSong.value.songId));
   }
 }
