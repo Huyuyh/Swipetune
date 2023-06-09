@@ -3,11 +3,10 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:swipetune/controllers/genre_controller.dart';
+import 'package:swipetune/widgets/select_artist/artist.dart';
 
-import 'genre.dart';
-
-class ListGenre extends StatelessWidget {
-  ListGenre({super.key});
+class ListArtist extends StatelessWidget {
+  ListArtist({super.key});
 
   final GenreController _genreController = Get.find<GenreController>();
 
@@ -19,7 +18,7 @@ class ListGenre extends StatelessWidget {
         spacing: 12,
         runSpacing: 50,
         children: [
-          ..._genreController.listGenre.map((e) => Genre(genre: e,)).toList()
+          ..._genreController.listArtist.map((e) => ArtistAv(artist: e,)).toList()
         ],
       ),
     );

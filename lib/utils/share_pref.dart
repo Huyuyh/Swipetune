@@ -20,10 +20,22 @@ Future<bool> setAccountId(String value) async {
   return prefs.setString('accountId', value);
 }
 
+
+
 Future<String?> getAccountID() async {
   final SharedPreferences prefs = await SharedPreferences.getInstance();
 
   return prefs.getString('accountId');
+}
+
+Future<bool> setIsFirstOnboard(bool isFirstOnboard) async {
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+  return prefs.setBool('isFirstOnBoard', isFirstOnboard);
+}
+
+Future<bool?> getIsFirstOnboard() async {
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+  return prefs.getBool('isFirstOnBoard');
 }
 
 Future<void> removeALL() async {

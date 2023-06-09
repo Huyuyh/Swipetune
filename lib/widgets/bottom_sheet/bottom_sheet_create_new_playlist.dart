@@ -52,7 +52,7 @@ class BottomSheetCreatePlayList extends StatelessWidget {
                   color: Color(0xffFF7D87),
                   onTap: () {
                     _createPlayListController
-                        .createPlayList(_nameController.text);
+                        .createPlayList(_nameController.text); 
                   },
                 )
               ],

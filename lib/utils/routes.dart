@@ -7,6 +7,7 @@ import 'package:swipetune/screens/my_library.dart';
 import 'package:swipetune/screens/playlist_detail.dart';
 import 'package:swipetune/screens/profile_page.dart';
 import 'package:swipetune/screens/select_app.dart';
+import 'package:swipetune/screens/select_artist.dart';
 import 'package:swipetune/screens/select_genre.dart';
 import 'package:swipetune/screens/sign_in.dart';
 import 'package:swipetune/screens/sign_up_page.dart';
@@ -26,6 +27,7 @@ class Routes {
   static const String _root = "/Root";
   static const String _playListDetail = "/PlayListDetail";
   static const String _startUp = "/StartUp";
+  static const String _selectArtist = "/SelectArtist";
 
   static String getStartUp() => _startUp;
   static String getHomeRoute() => _login;
@@ -36,6 +38,9 @@ class Routes {
   static String getSignUpRoute() => _signUp;
   static String getRootRoute() => _root;
   static String getPlayListDetail() => _playListDetail;
+  static String getAbout() => _aboutUs; 
+  static String getSelectGenre() => _selectGenre;
+  static String getSelectArtist() => _selectArtist;
 
 
   
@@ -53,6 +58,8 @@ class Routes {
     GetPage(name: _signIn, page: () => SignInScreen()),
     GetPage(name: _signUp, page: () => SignUpScreen()),
     GetPage(name: _playListDetail, page: () => PlayListDetailScreen()),
+    GetPage(name: _selectArtist, page: () => SelectArtistScreen()),
+
 
   ];
 }

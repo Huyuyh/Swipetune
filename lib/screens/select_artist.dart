@@ -7,10 +7,12 @@ import 'package:swipetune/controllers/genre_controller.dart';
 import 'package:swipetune/utils/constants.dart';
 import 'package:swipetune/utils/routes.dart';
 import 'package:swipetune/widgets/button/button_small.dart';
+import 'package:swipetune/widgets/select_artist/list_artist.dart';
 import 'package:swipetune/widgets/select_genre/list_genre.dart';
 
-class SelectGenreScreen extends StatelessWidget {
-  const SelectGenreScreen({super.key});
+class SelectArtistScreen extends StatelessWidget {
+  const SelectArtistScreen({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -36,24 +38,26 @@ class SelectGenreScreen extends StatelessWidget {
                   children: [
                     Container(
                       height: 50,
+
                       child: Text(
-                        'Please choose at least 1 genre',
+                        'Please choose at least 1 artist',
                         style: GoogleFonts.montserrat(
                             fontSize: 20, fontWeight: FontWeight.w600),
                       ),
                     ),
                     SizedBox(height: 32),
-                    Expanded(child: SingleChildScrollView(child: ListGenre())),
+                    Expanded(child: SingleChildScrollView(child: ListArtist())),
                     SizedBox(height: 32),
                   ],
                 ),
               ),
               Center(
                   child: SolidButtonSmall(
-                label: 'Next',
+                label: 'Finish',
                 color: Colors.pink,
                 onTap: () {
                   Get.find<GenreController>().createRecommendPlayList();
+                  // Get.toNamed(Routes.getSelectArtist());
                 },
               ))
             ],

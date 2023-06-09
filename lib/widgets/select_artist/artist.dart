@@ -5,28 +5,29 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:swipetune/controllers/genre_controller.dart';
 import 'package:swipetune/models/genre_model.dart';
+import 'package:swipetune/models/song_model.dart';
 
-class Genre extends StatelessWidget {
-  Genre({Key? key, required this.genre}) : super(key: key);
+class ArtistAv extends StatelessWidget {
+  ArtistAv({Key? key, required this.artist}) : super(key: key);
 
   final GenreController _genreController = Get.find<GenreController>();
 
-  final GenreModel genre;
+  final Artist artist;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        _genreController.toggleGenreList(genre);
+        _genreController.toggleArtistList(artist);
       },
       child: Container(
         child: Obx(() => Column(
           children: [
-            if (!_genreController.listChooseGenre.contains(genre)) ...[
+            if (!_genreController.listChooseArtist.contains(artist)) ...[
               Container(
                 width: 100,
                 height: 100,
-                child: Image.asset('assets/images/tmp_genre_image.png', fit: BoxFit.cover,),
+                child: ClipOval(child: Image.network('${artist.artistImgUrl}', fit: BoxFit.cover,)),
               ),
             ] else ...[
               Container(
@@ -44,7 +45,7 @@ class Genre extends StatelessWidget {
                 ),
               ),
             ],
-            Text("${genre.name}",
+            Text("${artist.name}", 
             style: TextStyle(
               fontSize: 12,
             ),)

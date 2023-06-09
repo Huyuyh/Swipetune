@@ -87,4 +87,9 @@ class Artist {
     data['AccountArtists'] = this.accountArtists;
     return data;
   }
+
+  static fromList(data) {
+    var list = data as List;
+    return list.map((map) => Artist.fromJson(map)).toList();
+  }
 }
