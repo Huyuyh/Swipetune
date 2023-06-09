@@ -74,6 +74,10 @@ class SwipeTest extends StatelessWidget {
   }
 
   void _swipe(int index, AppinioSwiperDirection direction) {
+    if(index == homeController.songModels.indexOf(homeController.songModels.last)) {
+      homeController.fetchNewSong();
+      print(homeController.songModels);
+    }
     print("the card was swiped to the: " + direction.name);
   }
 

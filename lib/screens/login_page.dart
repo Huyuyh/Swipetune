@@ -28,8 +28,8 @@ class LoginScreen extends StatelessWidget {
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
               colors: [
-                Color.fromRGBO(0, 0, 0, 0.3),
-                Color.fromRGBO(0, 0, 0, 0.3),
+                Color.fromRGBO(0, 0, 0, 0.5),
+                Color.fromRGBO(0, 0, 0, 0.5),
               ],
             ),
             backgroundBlendMode: BlendMode.srcOver,
@@ -44,9 +44,9 @@ class LoginScreen extends StatelessWidget {
                     end: Alignment.bottomCenter,
                     stops: [0, 0.4896, 1],
                     colors: [
-                      Color(0xff31c9ce),
-                      Color.fromRGBO(255, 255, 255, 0.31),
-                      Color(0xffff7d87),
+                      Color.fromARGB(255, 0, 179, 255),
+                      Color.fromRGBO(224, 9, 9, 0.31),
+                      Color.fromARGB(255, 239, 6, 6),
                     ],
                   ),
                   backgroundBlendMode: BlendMode.screen,
@@ -87,7 +87,7 @@ class LoginScreen extends StatelessWidget {
                        OutlineButtonLarge(
                         label: "Log in",
                         color: Colors.transparent,
-                        fontsize: 16,
+                        fontsize: 20,
                          onTap: () {
                         Get.toNamed(Routes.getSignInRoute());
                       },

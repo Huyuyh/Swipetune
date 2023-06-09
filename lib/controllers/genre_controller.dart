@@ -20,6 +20,8 @@ class GenreController extends GetxController {
 
   GenreDAO genreDAO = GenreDAO();
 
+  
+
   void toggleGenreList(GenreModel genre) {
     if (_listChooseGenre.contains(genre)) {
       _listChooseGenre.remove(genre);
