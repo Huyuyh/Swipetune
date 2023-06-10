@@ -22,22 +22,47 @@ class SwipeCard extends StatelessWidget {
         ],
       ),
       child: Container(
-        alignment: Alignment.center,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          image: DecorationImage(
-            image: NetworkImage(song.songImgUrl.toString()),
-            fit: BoxFit.cover,
-          ),
         ),
         child: Stack(
           children: [
+            // Image
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: Colors.black.withOpacity(0.5),
+                image: DecorationImage(
+                  image: NetworkImage(song.songImgUrl.toString()),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
+            // Dark Overlay
+            Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Colors.transparent,
+                    Colors.transparent,
+                    Colors.transparent,
+                    Colors.transparent,
+                    Colors.transparent,
+                    Colors.transparent,
+                    Colors.transparent,
+
+
+                    Colors.black.withOpacity(0.5),
+
+
+                    Colors.black.withOpacity(1),
+                  ],
+                ),
+              ),
+            ),
+            // Content
             Padding(
               padding: const EdgeInsets.all(20),
               child: Column(
@@ -59,7 +84,7 @@ class SwipeCard extends StatelessWidget {
                   ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
