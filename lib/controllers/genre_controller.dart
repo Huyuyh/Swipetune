@@ -1,7 +1,10 @@
 import 'package:get/get.dart';
+import 'package:swipetune/controllers/home_controller.dart';
 import 'package:swipetune/dao/genre_dao.dart';
 import 'package:swipetune/models/genre_model.dart';
 import 'package:swipetune/models/song_model.dart';
+import 'package:swipetune/utils/routes.dart';
+import 'package:swipetune/utils/share_pref.dart';
 import 'package:swipetune/widgets/add_to_play_list/list_add_play_list.dart';
 
 class GenreController extends GetxController {
@@ -19,8 +22,6 @@ class GenreController extends GetxController {
   List<Artist> get listChooseArtist => _listChooseArtist.value;
 
   GenreDAO genreDAO = GenreDAO();
-
-  
 
   void toggleGenreList(GenreModel genre) {
     if (_listChooseGenre.contains(genre)) {
@@ -43,7 +44,19 @@ class GenreController extends GetxController {
     try {
       _isLoading.value = true;
       _listGenre.value = (await genreDAO.getGenres())!;
-      _listArtist.value = (await genreDAO.getArtists())!;
+      // _listArtist.value = (await genreDAO.getArtists())!;
+    } catch (e) {
+      // Handle any errors that occurred
+      print(e);
+    } finally {
+      _isLoading.value = false;
+    }
+  }
+
+  Future<void> fetchChoosedGenre() async {
+    try {
+      _isLoading.value = true;
+      _listChooseGenre.value = (await genreDAO.getChooseGenres())!;
     } catch (e) {
       // Handle any errors that occurred
       print(e);
@@ -56,7 +69,14 @@ class GenreController extends GetxController {
     _isLoading.value = true;
     await genreDAO.addAccountGenre(_listChooseGenre);
     // await genreDAO.addAccountArtist(_listChooseArtist);
-    await genreDAO.updateAccount();
+    String? accountId = await getAccountID();
+
+    if (accountId == null || accountId.isEmpty) {
+      await genreDAO.updateAccount();
+    }
+    Get.find<HomeController>().fetchSong();
+    await Get.offAllNamed(Routes.getStartUp());
+
     _isLoading.value = false;
   }
 }

@@ -50,7 +50,7 @@ class SelectGenreScreen extends StatelessWidget {
               ),
               Center(
                   child: SolidButtonSmall(
-                label: 'Next',
+                label: 'Finish',
                 color: Colors.pink,
                 onTap: () {
                   Get.find<GenreController>().createRecommendPlayList();

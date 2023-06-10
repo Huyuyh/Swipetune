@@ -10,18 +10,23 @@ class PlayListController extends GetxController {
   final _isLoading = false.obs;
   bool get isLoading => _isLoading.value;
 
+  
+
   final _playLists = <PlayListModel>[].obs;
-  List<PlayListModel> get playLists => _playLists.toList();
+  List<PlayListModel> get playLists => _playLists.value;
+
+
+  @override
+  void onInit() {
+    fetchPlayLists();
+    super.onInit();
+  }
 
   Future<void> fetchPlayLists() async {
     try {
       _isLoading.value = true;
-      final playLists = await dao.getPlayLists();
-      if (playLists != null) {
-        _playLists.assignAll(playLists);
-      } else {
-        // Handle the case when playLists is null
-      }
+      _playLists.value = (await dao.getPlayLists())!;
+      
     } catch (e) {
       // Handle any errors that occurred
       print(e);

@@ -19,6 +19,21 @@ class GenreDAO {
     return null;
   }
 
+  Future<List<GenreModel>?> getChooseGenres() async {
+
+    String? accountId = await getAccountID();
+
+    try {
+      final res = await ApiService.get('/Genre/GetListAccountGenre/${accountId}', {}, {});
+      List<GenreModel> list = GenreModel.fromList(res.data);
+
+      return list;
+    } catch (e) {
+      print(e);
+    }
+    return null;
+  }
+
   Future<List<Artist>?> getArtists() async {
     try {
       final res =
@@ -35,7 +50,13 @@ class GenreDAO {
   Future addAccountGenre(List<GenreModel> genres) async {
     List<Map<String, dynamic>> param = [];
 
-    String? accountId = await Get.find<LoginController>().tmpAccountId;
+    String? accountId = await  getAccountID();
+
+    if(accountId == null || accountId.isEmpty) {
+    accountId = await Get.find<LoginController>().tmpAccountId;
+
+    }
+
 
     for (var element in genres) {
       param.add({"AccountId": accountId, "GenreId": element.genreId});
@@ -73,7 +94,6 @@ class GenreDAO {
       final res = await ApiService.put(
           '/Account/CheckLoginFirstTime/$accountId', {}, {}, {});
       await setAccountId(accountId);
-      await Get.toNamed(Routes.getStartUp());
     } catch (e) {
       print(e);
     }

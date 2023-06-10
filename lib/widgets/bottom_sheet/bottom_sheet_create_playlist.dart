@@ -18,10 +18,9 @@ class BottomSheetAddToPlayList extends StatelessWidget {
 
   final String? songId;
 
-  final PlayListController _playListController = Get.put(PlayListController());
+  final PlayListController _playListController = Get.find<PlayListController>();
 
-  final AddPlayListController _addPlayListController =
-      Get.put(AddPlayListController());
+  final AddPlayListController _addPlayListController = Get.find<AddPlayListController>();
 
   @override
   Widget build(BuildContext context) {
@@ -58,10 +57,10 @@ class BottomSheetAddToPlayList extends StatelessWidget {
               color: Color(0xff31C9CE),
               onTap: () async {
                 bool isAddSuccess = await _playListController.addPlayList(songId, _addPlayListController.listPlayListCheck);
-                // if(isAddSuccess) {
+                if(isAddSuccess) {
 
-                //   Get.toNamed(Routes.getRootRoute());
-                // }
+                  Get.toNamed(Routes.getRootRoute());
+                }
               }),
         ),
       ),

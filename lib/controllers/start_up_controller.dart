@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:swipetune/controllers/add_play_list_controller.dart';
 import 'package:swipetune/dao/login_dao.dart';
 import 'package:swipetune/models/play_list_model.dart';
 import 'package:swipetune/utils/routes.dart';
@@ -30,6 +31,7 @@ class StartUpController extends GetxController {
     // else
      if (hasLoggedInUser) {
       _isLoading.value = true;
+      Get.put(AddPlayListController());
       Get.toNamed(Routes.getRootRoute());
     } else {
       _isLoading.value = true;

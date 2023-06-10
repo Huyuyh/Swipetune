@@ -23,31 +23,59 @@ class Genre extends StatelessWidget {
         child: Obx(() => Column(
           children: [
             if (!_genreController.listChooseGenre.contains(genre)) ...[
+              // Container(
+              //   width: 100,
+              //   height: 100,
+              //   child: Image.asset('assets/images/tmp_genre_image.png', fit: BoxFit.cover,),
+              // ),
               Container(
-                width: 100,
-                height: 100,
-                child: Image.asset('assets/images/tmp_genre_image.png', fit: BoxFit.cover,),
-              ),
-            ] else ...[
-              Container(
-                height: 100,
-                width: 100,
+                padding: EdgeInsets.all(5),
                 decoration: BoxDecoration(
-                  color: Color(0xff31C9CE),
+                  border: Border.all(
+                    color: Colors.black
+                  ),
                   borderRadius: BorderRadius.circular(50),
                 ),
-                alignment: Alignment.center,
-                child: const Icon(
-                  Icons.check,
-                  color: CupertinoColors.white,
-                  size: 40,
-                ),
+                child: Text("${genre.name}",
+                style: TextStyle(
+                  color: Colors.black
+                ),),
               ),
+            ] else ...[    
+              Container(
+                padding: EdgeInsets.all(5),
+                decoration: BoxDecoration(
+                    color: Colors.black,
+
+                  border: Border.all(
+                    color: Colors.black
+                  ),
+                  borderRadius: BorderRadius.circular(50),
+                ),
+                child: Text("${genre.name}",
+                style: TextStyle(
+                  color: Colors.white
+                ),),
+              ),       
+              // Container(
+              //   height: 100,
+              //   width: 100,
+              //   decoration: BoxDecoration(
+              //     color: Color(0xff31C9CE),
+              //     borderRadius: BorderRadius.circular(50),
+              //   ),
+              //   alignment: Alignment.center,
+              //   child: const Icon(
+              //     Icons.check,
+              //     color: CupertinoColors.white,
+              //     size: 40,
+              //   ),
+              // ),
             ],
-            Text("${genre.name}",
-            style: TextStyle(
-              fontSize: 12,
-            ),)
+            // Text("${genre.name}",
+            // style: TextStyle(
+            //   fontSize: 12,
+            // ),)
           ],
         ),)
       ),

@@ -52,11 +52,16 @@ class SwipeCard extends StatelessWidget {
                     Colors.transparent,
                     Colors.transparent,
                     Colors.transparent,
+                    Colors.transparent,
+                    Colors.transparent,
+                    Colors.transparent,
 
+                    Colors.black.withOpacity(0.1),
+
+
+                    Colors.black.withOpacity(0.2),
 
                     Colors.black.withOpacity(0.5),
-
-
                     Colors.black.withOpacity(1),
                   ],
                 ),

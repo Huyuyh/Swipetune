@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:swipetune/controllers/genre_controller.dart';
 import 'package:swipetune/utils/routes.dart';
 import 'package:swipetune/utils/share_pref.dart';
 import 'package:swipetune/widgets/button/button_small.dart';
@@ -32,13 +33,26 @@ class ProfileHeader extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            SolidButtonSmall(label: "Edit", color: Color(0xff7FEDF0)),
+            SolidButtonSmall(
+              label: "Edit", 
+              color: Color(0xff7FEDF0),
+              onTap: () async {
+                bool test = Get.isRegistered<GenreController>();
+                if(!test) {
+                  await Get.put(GenreController());
+                  await Get.find<GenreController>().fetchGenre();
+                  await Get.find<GenreController>().fetchChoosedGenre();
+
+                }
+                Get.toNamed(Routes.getSelectGenre());
+              },
+              ),
             SolidButtonSmall(
               label: "Log out",
               color: Color(0xffFF7D87),
               onTap: () {
                 removeALL();
-                Get.toNamed(Routes.getStartUp());
+                Get.offAllNamed(Routes.getHomeRoute());
               },
             ),
           ],

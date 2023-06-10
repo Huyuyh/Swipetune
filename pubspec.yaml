@@ -49,6 +49,7 @@ dependencies:
   intl: ^0.18.1
   just_audio: ^0.9.34
   appinio_swiper: ^2.0.1
+  equatable: ^2.0.5
 
 dev_dependencies:
   flutter_test:

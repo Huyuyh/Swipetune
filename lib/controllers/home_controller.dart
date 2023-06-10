@@ -34,22 +34,8 @@ class HomeController extends GetxController {
   SongModel get currentSong => _currentSong.value;
 
   @override
-  void onInit() async {
-    _isLoading.value = true;
-    try {
-      songModels = (await songDAO.getListSongRecommend())!;
-    } catch (error) {
-      // Handle the error gracefully
-      print("Error: $error");
-      Get.snackbar(
-        "Error",
-        "Failed to fetch song recommendations",
-        duration: Duration(milliseconds: 1500),
-      );
-    } finally {
-      _isLoading.value = false;
-    }
-
+  void onInit() {
+    fetchSong();
     super.onInit();
   }
 
@@ -72,15 +58,29 @@ class HomeController extends GetxController {
   }
 
   void fetchNewSong() async {
-
     final newSongs = await songDAO.getListSongRecommend();
     if (newSongs != null) {
       songModels.addAll(newSongs);
     }
     _isLoading.value = true;
 
-
     _isLoading.value = false;
+  }
 
+  void fetchSong() async {
+    _isLoading.value = true;
+    try {
+      songModels = (await songDAO.getListSongRecommend())!;
+    } catch (error) {
+      // Handle the error gracefully
+      print("Error: $error");
+      Get.snackbar(
+        "Error",
+        "Failed to fetch song recommendations",
+        duration: Duration(milliseconds: 1500),
+      );
+    } finally {
+      _isLoading.value = false;
+    }
   }
 }

@@ -1,7 +1,6 @@
+import 'package:equatable/equatable.dart';
 
-
-
-class GenreModel {
+class GenreModel extends Equatable {
   int? genreId;
   String? name;
   Null? description;
@@ -29,4 +28,17 @@ class GenreModel {
     var list = data as List;
     return list.map((map) => GenreModel.fromJson(map)).toList();
   }
+
+  @override
+  List<Object?> get props => [genreId, name, description, accountGenres];
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is GenreModel &&
+          runtimeType == other.runtimeType &&
+          genreId == other.genreId &&
+          name == other.name &&
+          description == other.description &&
+          accountGenres == other.accountGenres;
 }

@@ -17,7 +17,8 @@ class ListGenre extends StatelessWidget {
     return Container(
       child: Wrap( 
         spacing: 12,
-        runSpacing: 50,
+        runSpacing: 32,
+        alignment: WrapAlignment.center,
         children: [
           ..._genreController.listGenre.map((e) => Genre(genre: e,)).toList()
         ],

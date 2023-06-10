@@ -25,7 +25,7 @@ class PlayList extends StatefulWidget {
 }
 
 class _PlayListState extends State<PlayList> {
-  final AddPlayListController _controller = Get.put(AddPlayListController());
+  final AddPlayListController _controller = Get.find<AddPlayListController>();
 
   bool isAdded = false;
 
