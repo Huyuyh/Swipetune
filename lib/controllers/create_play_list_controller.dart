@@ -22,6 +22,14 @@ class CreatePlayListController extends GetxController {
       await playListDAO.createNewPlayList(name);
       await Get.find<PlayListController>().fetchPlayLists();
       Get.back();
+      Get.snackbar(
+        'Success',
+        'Playlist create successfully.',
+        duration: Duration(seconds: 2),
+        snackPosition: SnackPosition.TOP,
+        backgroundColor: Color(0xffFF7D87),
+        colorText: Colors.white,
+      );
 
     } catch (e) {
       // Handle error

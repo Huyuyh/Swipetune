@@ -3,13 +3,16 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:swipetune/controllers/genre_controller.dart';
+import 'package:swipetune/controllers/play_list_controller.dart';
 import 'package:swipetune/utils/routes.dart';
 import 'package:swipetune/utils/share_pref.dart';
 import 'package:swipetune/widgets/button/button_small.dart';
 import 'package:swipetune/widgets/profile/avatar.dart';
 
 class ProfileHeader extends StatelessWidget {
-  const ProfileHeader({super.key});
+  ProfileHeader({super.key});
+
+  final PlayListController playListController = Get.find<PlayListController>();
 
   @override
   Widget build(BuildContext context) {
@@ -60,39 +63,39 @@ class ProfileHeader extends StatelessWidget {
         SizedBox(
           height: 20,
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Column(
-              children: [
-                Text("75"),
-                Text("Playlist"),
-              ],
-            ),
-            Container(
-              width: 1.0,
-              color: Colors.black,
-              height: 40.0, // Adjust the height of the line as needed
-            ),
-            Column(
-              children: [
-                Text("45"),
-                Text("Follower"),
-              ],
-            ),
-            Container(
-              width: 1.0,
-              color: Colors.black,
-              height: 40.0, // Adjust the height of the line as needed
-            ),
-            Column(
-              children: [
-                Text("30"),
-                Text("Following"),
-              ],
-            ),
-          ],
-        )
+        // Row(
+        //   mainAxisAlignment: MainAxisAlignment.spaceAround,
+        //   children: [
+        //     Column(
+        //       children: [
+        //         Text("${playListController.playLists.length}"),
+        //         Text("Playlist"),
+        //       ],
+        //     ),
+        //     Container(
+        //       width: 1.0,
+        //       color: Colors.black,
+        //       height: 40.0, // Adjust the height of the line as needed
+        //     ),
+        //     Column(
+        //       children: [
+        //         Text("45"),
+        //         Text("Follower"),
+        //       ],
+        //     ),
+        //     Container(
+        //       width: 1.0,
+        //       color: Colors.black,
+        //       height: 40.0, // Adjust the height of the line as needed
+        //     ),
+        //     Column(
+        //       children: [
+        //         Text("30"),
+        //         Text("Following"),
+        //       ],
+        //     ),
+        //   ],
+        // )
       ],
     ));
   }

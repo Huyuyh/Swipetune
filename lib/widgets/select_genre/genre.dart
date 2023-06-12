@@ -29,7 +29,7 @@ class Genre extends StatelessWidget {
               //   child: Image.asset('assets/images/tmp_genre_image.png', fit: BoxFit.cover,),
               // ),
               Container(
-                padding: EdgeInsets.all(5),
+                padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   border: Border.all(
                     color: Colors.black
@@ -38,12 +38,14 @@ class Genre extends StatelessWidget {
                 ),
                 child: Text("${genre.name}",
                 style: TextStyle(
-                  color: Colors.black
+                  color: Colors.black,
+                  fontSize: 16
+
                 ),),
               ),
             ] else ...[    
               Container(
-                padding: EdgeInsets.all(5),
+                padding: EdgeInsets.all(10),
                 decoration: BoxDecoration(
                     color: Colors.black,
 
@@ -54,7 +56,8 @@ class Genre extends StatelessWidget {
                 ),
                 child: Text("${genre.name}",
                 style: TextStyle(
-                  color: Colors.white
+                  color: Colors.white,
+                  fontSize: 16
                 ),),
               ),       
               // Container(

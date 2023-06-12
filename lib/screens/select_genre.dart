@@ -16,14 +16,14 @@ class SelectGenreScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: Container(
-            child: Icon(Icons.arrow_back),
-          ),
-          onPressed: () {
-            Get.back();
-          },
-        ),
+        // leading: IconButton(
+        //   icon: Container(
+        //     child: Icon(Icons.arrow_back),
+        //   ),
+        //   onPressed: () {
+        //     Get.back();
+        //   },
+        // ),
       ),
       body: SafeArea(
         child: Container(
@@ -37,7 +37,7 @@ class SelectGenreScreen extends StatelessWidget {
                     Container(
                       height: 50,
                       child: Text(
-                        'Please choose at least 1 genre',
+                        'Please choose up to 5 genres',
                         style: GoogleFonts.montserrat(
                             fontSize: 20, fontWeight: FontWeight.w600),
                       ),

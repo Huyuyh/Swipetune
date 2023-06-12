@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:swipetune/controllers/resgister_controller.dart';
+import 'package:swipetune/utils/routes.dart';
 import 'package:swipetune/widgets/button/button_large.dart';
 
 class SignUpBottom extends StatelessWidget {
@@ -27,8 +28,8 @@ class SignUpBottom extends StatelessWidget {
               label: "Sign Up",
               color: Colors.pink,
               onTap: () {
-                // _registerController.login(emailController.text, passwordController.text);
-                // Get.toNamed(Routes.getHomePageRoute());
+                _registerController.register(emailController.text, passwordController.text, phoneController.text);
+                Get.toNamed(Routes.getSignInRoute());
               },
             ),
             SizedBox(

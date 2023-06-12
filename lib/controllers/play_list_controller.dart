@@ -48,6 +48,8 @@ class PlayListController extends GetxController {
         'Playlist added successfully.',
         duration: Duration(seconds: 2),
         snackPosition: SnackPosition.TOP,
+        backgroundColor: Color(0xffFF7D87),
+        colorText: Colors.white,
       );
     } else {
       // Show error dialog using Get.dialog

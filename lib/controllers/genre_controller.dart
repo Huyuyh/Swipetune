@@ -26,7 +26,7 @@ class GenreController extends GetxController {
   void toggleGenreList(GenreModel genre) {
     if (_listChooseGenre.contains(genre)) {
       _listChooseGenre.remove(genre);
-    } else {
+    } else if(_listChooseGenre.length < 5) {
       _listChooseGenre.add(genre);
     }
   }
@@ -74,7 +74,9 @@ class GenreController extends GetxController {
     if (accountId == null || accountId.isEmpty) {
       await genreDAO.updateAccount();
     }
-    Get.find<HomeController>().fetchSong();
+    if (Get.isRegistered<HomeController>()) {
+      Get.find<HomeController>().fetchSong();
+    }
     await Get.offAllNamed(Routes.getStartUp());
 
     _isLoading.value = false;

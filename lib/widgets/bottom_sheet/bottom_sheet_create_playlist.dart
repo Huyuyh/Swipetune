@@ -20,7 +20,8 @@ class BottomSheetAddToPlayList extends StatelessWidget {
 
   final PlayListController _playListController = Get.find<PlayListController>();
 
-  final AddPlayListController _addPlayListController = Get.find<AddPlayListController>();
+  final AddPlayListController _addPlayListController =
+      Get.find<AddPlayListController>();
 
   @override
   Widget build(BuildContext context) {
@@ -52,16 +53,21 @@ class BottomSheetAddToPlayList extends StatelessWidget {
         bottomNavigationBar: Container(
           color: Colors.transparent,
           padding: const EdgeInsets.all(20),
-          child: SolidButtonSmall(
+          child: Obx(() => SolidButtonSmall(
               label: "Add",
-              color: Color(0xff31C9CE),
-              onTap: () async {
-                bool isAddSuccess = await _playListController.addPlayList(songId, _addPlayListController.listPlayListCheck);
-                if(isAddSuccess) {
+              color: _addPlayListController.listPlayListCheck.isNotEmpty ? Color(0xff31C9CE) : Colors.grey,
+              onTap: _addPlayListController.listPlayListCheck.isNotEmpty 
+               ? () async {
+                await _playListController.addPlayList(
+                    songId, _addPlayListController.listPlayListCheck);
+                // bool isAddSuccess =
+                // if(isAddSuccess) {
 
-                  Get.toNamed(Routes.getRootRoute());
-                }
-              }),
+                //   Get.toNamed(Routes.getRootRoute());
+                // }
+              }
+              : null
+              )),
         ),
       ),
     );

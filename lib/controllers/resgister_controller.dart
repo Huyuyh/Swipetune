@@ -21,7 +21,7 @@ class RegisterController extends GetxController {
     try {
       _isLoading.value = true;
       await _loginDAO.register(email, password, phone);
-      Get.toNamed(Routes.getStartUp());
+      // Get.toNamed(Routes.getStartUp());
       // Simulate successful login
       _isLoggedIn.value = true;
     } catch (e) {
