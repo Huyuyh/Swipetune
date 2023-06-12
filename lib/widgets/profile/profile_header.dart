@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/widgets.dart';
@@ -37,25 +38,41 @@ class ProfileHeader extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             SolidButtonSmall(
-              label: "Edit", 
+              label: "Edit",
               color: Color(0xff7FEDF0),
               onTap: () async {
                 bool test = Get.isRegistered<GenreController>();
-                if(!test) {
+                if (!test) {
                   await Get.put(GenreController());
                   await Get.find<GenreController>().fetchGenre();
                   await Get.find<GenreController>().fetchChoosedGenre();
-
                 }
                 Get.toNamed(Routes.getSelectGenre());
               },
-              ),
+            ),
             SolidButtonSmall(
-              label: "Log out",
-              color: Color(0xffFF7D87),
+              label: "Upgrade",
+              color: CupertinoColors.activeGreen,
               onTap: () {
-                removeALL();
-                Get.offAllNamed(Routes.getHomeRoute());
+                Get.dialog(
+                  AlertDialog(
+                    title: Text('Update premium'),
+                    content: Container(
+                      width: 300,
+                      height: 300,
+                      child: Image.network("https://media.istockphoto.com/id/828088276/vector/qr-code-illustration.jpg?s=612x612&w=0&k=20&c=FnA7agr57XpFi081ZT5sEmxhLytMBlK4vzdQxt8A70M="),
+                    ),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          // Close the dialog
+                          Get.back();
+                        },
+                        child: Text('OK'),
+                      ),
+                    ],
+                  ),
+                );
               },
             ),
           ],
@@ -63,39 +80,17 @@ class ProfileHeader extends StatelessWidget {
         SizedBox(
           height: 20,
         ),
-        // Row(
-        //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-        //   children: [
-        //     Column(
-        //       children: [
-        //         Text("${playListController.playLists.length}"),
-        //         Text("Playlist"),
-        //       ],
-        //     ),
-        //     Container(
-        //       width: 1.0,
-        //       color: Colors.black,
-        //       height: 40.0, // Adjust the height of the line as needed
-        //     ),
-        //     Column(
-        //       children: [
-        //         Text("45"),
-        //         Text("Follower"),
-        //       ],
-        //     ),
-        //     Container(
-        //       width: 1.0,
-        //       color: Colors.black,
-        //       height: 40.0, // Adjust the height of the line as needed
-        //     ),
-        //     Column(
-        //       children: [
-        //         Text("30"),
-        //         Text("Following"),
-        //       ],
-        //     ),
-        //   ],
-        // )
+        SolidButtonSmall(
+          label: "Log out",
+          color: Color(0xffFF7D87),
+          onTap: () {
+            removeALL();
+            Get.offAllNamed(Routes.getHomeRoute());
+          },
+        ),
+        SizedBox(
+          height: 20,
+        ),
       ],
     ));
   }
