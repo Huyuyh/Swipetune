@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:appinio_swiper/appinio_swiper.dart';
 import 'package:get/get.dart';
 import 'package:swipetune/controllers/home_controller.dart';
+import 'package:swipetune/services/spotify_service.dart';
 import 'package:swipetune/widgets/swipe_button/swipe_button.dart';
 import 'package:swipetune/widgets/swipe_card/swipe_card.dart';
 
@@ -46,6 +47,7 @@ class SwipeTest extends StatelessWidget {
                 cardsBuilder: (BuildContext context, int index) {
                   homeController
                       .setCurrentSong(homeController.songModels[index]);
+                  // playMusic(homeController.songModels[index].songId.toString());
                   return SwipeCard(song: homeController.songModels[index]);
                 },
               ),
@@ -60,6 +62,12 @@ class SwipeTest extends StatelessWidget {
                 // const SizedBox(
                 //   width: 20,
                 // ),
+                if (homeController.isPause) ...[
+                  swipePauseButton(homeController),
+                ] else ...[
+                  swipePlayButton(homeController),
+                ],
+
                 swipeRightButton(homeController),
                 const SizedBox(
                   width: 20,
@@ -74,15 +82,19 @@ class SwipeTest extends StatelessWidget {
   }
 
   void _swipe(int index, AppinioSwiperDirection direction) {
-    if(index == homeController.songModels.indexOf(homeController.songModels.last)) {
+    if (index ==
+        homeController.songModels.indexOf(homeController.songModels.last)) {
       homeController.fetchNewSong();
       print(homeController.songModels);
     }
+    homeController.setPause(true);
+
     print("the card was swiped to the: " + direction.name);
   }
 
   void _unswipe(bool unswiped) {
     if (unswiped) {
+      homeController.setPause(true);
       print("SUCCESS: card was unswiped");
     } else {
       print("FAIL: no card left to unswipe");

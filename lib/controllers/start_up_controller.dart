@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 import 'package:swipetune/controllers/add_play_list_controller.dart';
 import 'package:swipetune/dao/login_dao.dart';
 import 'package:swipetune/models/play_list_model.dart';
+import 'package:swipetune/services/spotify_service.dart';
+import 'package:swipetune/utils/constants.dart';
 import 'package:swipetune/utils/routes.dart';
 import 'package:swipetune/utils/share_pref.dart';
 
@@ -11,6 +13,7 @@ class StartUpController extends GetxController {
   bool get isLoading => _isLoading.value;
 
   StartUpController() {
+    pause();
     handleStartUpLogic();
   }
 
@@ -31,6 +34,8 @@ class StartUpController extends GetxController {
     // else
      if (hasLoggedInUser) {
       _isLoading.value = true;
+      connectToSpotifyRemote('$callbackUrlScheme:/');
+
       Get.put(AddPlayListController());
       Get.toNamed(Routes.getRootRoute());
     } else {

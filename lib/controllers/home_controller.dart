@@ -14,6 +14,7 @@ import 'package:swipetune/dao/song_dao.dart';
 import 'package:swipetune/models/content.dart';
 import 'package:swipetune/models/song_model.dart';
 import 'package:swipetune/services/spotify_request.dart';
+import 'package:swipetune/services/spotify_service.dart';
 import 'package:swipetune/utils/data.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:spotify_sdk/models/player_state.dart';
@@ -24,6 +25,8 @@ import 'package:just_audio/just_audio.dart';
 class HomeController extends GetxController {
   final _isLoading = false.obs;
 
+  final _isPause = true.obs;
+
   List<SongModel> songModels = <SongModel>[].obs;
 
   final _currentSong = SongModel().obs;
@@ -31,11 +34,14 @@ class HomeController extends GetxController {
   final SongDAO songDAO = SongDAO();
 
   bool get isLoading => _isLoading.value;
+  bool get isPause => _isPause.value;
+
   SongModel get currentSong => _currentSong.value;
 
   @override
-  void onInit() {
-    fetchSong();
+  void onInit() async {
+    await setShuffle(false);
+    await fetchSong();
     super.onInit();
   }
 
@@ -44,7 +50,17 @@ class HomeController extends GetxController {
     super.onClose();
   }
 
+
+  
+
   // New Swipe card
+
+  void setPause(bool value) {
+    if(value == true){
+      pause();
+    }
+    _isPause.value = value;
+  }
 
   void setCurrentSong(SongModel song) {
     _currentSong.value = song;
@@ -67,10 +83,15 @@ class HomeController extends GetxController {
     _isLoading.value = false;
   }
 
-  void fetchSong() async {
+  Future fetchSong() async {
     _isLoading.value = true;
     try {
       songModels = (await songDAO.getListSongRecommend())!;
+      _currentSong.value = songModels.first;
+
+      // for (var element in songModels) {
+      //   addQueue(element.songId.toString());
+      // }
     } catch (error) {
       // Handle the error gracefully
       print("Error: $error");
@@ -83,4 +104,6 @@ class HomeController extends GetxController {
       _isLoading.value = false;
     }
   }
+
+
 }

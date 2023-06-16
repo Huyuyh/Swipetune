@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:swipetune/controllers/genre_controller.dart';
 import 'package:swipetune/controllers/play_list_controller.dart';
 import 'package:swipetune/controllers/spotify_controller.dart';
+import 'package:swipetune/services/spotify_service.dart';
 import 'package:swipetune/utils/routes.dart';
 import 'package:swipetune/utils/share_pref.dart';
 import 'package:swipetune/widgets/button/button_small.dart';
@@ -88,6 +89,8 @@ class ProfileHeader extends StatelessWidget {
           color: Color(0xffFF7D87),
           onTap: () {
             removeALL();
+            pause();
+            disconnectSpotify();
             Get.offAllNamed(Routes.getHomeRoute());
           },
         ),

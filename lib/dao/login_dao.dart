@@ -4,6 +4,7 @@ import 'package:swipetune/controllers/genre_controller.dart';
 import 'package:swipetune/controllers/login_controller.dart';
 import 'package:swipetune/services/request.dart';
 import 'package:jwt_decode/jwt_decode.dart';
+import 'package:swipetune/services/spotify_service.dart';
 import 'package:swipetune/utils/constants.dart';
 import 'package:swipetune/utils/routes.dart';
 import 'package:swipetune/utils/share_pref.dart';
@@ -30,13 +31,14 @@ class LoginDAO {
 
       Map<String, dynamic> decode = Jwt.parseJwt(response.data["token"]);
 
+
       print(decode);
+
       if (decode["isFirstTime"]) {
         Get.put(GenreController());
         Get.toNamed(Routes.getAbout());
         Get.find<LoginController>().setAccountId(decode["Id"]);
         Get.find<GenreController>().fetchGenre();
-
         return;
       } else {
         setAccountId(decode["Id"]);

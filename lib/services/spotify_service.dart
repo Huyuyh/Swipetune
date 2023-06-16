@@ -1,18 +1,25 @@
 import 'package:flutter/services.dart';
+import 'package:spotify_sdk/models/player_state.dart';
 import 'package:spotify_sdk/spotify_sdk.dart';
 import 'package:swipetune/utils/constants.dart';
 import 'package:swipetune/utils/share_pref.dart';
+
+Future<void> disconnectSpotify() async {
+  try {
+    var result = await SpotifySdk.disconnect();
+  } on PlatformException catch (e) {
+    print(e);
+  } on MissingPluginException {}
+}
 
 Future<void> connectToSpotifyRemote(String redirectUrl) async {
   try {
     var result = await SpotifySdk.connectToSpotifyRemote(
         clientId: spotifyClientId,
-        redirectUrl: redirectUrl);
+        redirectUrl: redirectUrl,);
   } on PlatformException catch (e) {
-    print(e);
-  } on MissingPluginException {
-
-  }
+    throw e;
+  } on MissingPluginException {}
 }
 
 Future<String> getSpotifyAccessToken(String redirectUrl) async {
@@ -32,22 +39,81 @@ Future<String> getSpotifyAccessToken(String redirectUrl) async {
   }
 }
 
+Future<void> playMusic(String id) async {
+  try {
+    final playerState = await SpotifySdk.getPlayerState();
+  
 
-Future<void> playMusic() async {
+    if (playerState != null && playerState.track != null && playerState.track!.uri == 'spotify:track:$id') {
+      // If the current track is already playing, do nothing
+      return;
+    }
+    await SpotifySdk.play(spotifyUri: 'spotify:track:$id');
+  } on PlatformException catch (e) {
+    print(e);
+  } on MissingPluginException {
+    throw "not implement";
+  }
+}
+
+Future<void> pause() async {
+  try {
+    await SpotifySdk.pause();
+  } on PlatformException catch (e) {
+    print(e);
+  } on MissingPluginException {}
+}
+
+Future<void> addQueue(String id) async {
+  try {
+    await SpotifySdk.queue(spotifyUri: 'spotify:track:$id');
+  } on PlatformException catch (e) {
+    print(e);
+  } on MissingPluginException {}
+}
+
+Future<PlayerState?> getPlayerState() async {
+  try {
+    return await SpotifySdk.getPlayerState();
+  } on PlatformException catch (e) {
+    print(e);
+  } on MissingPluginException {}
+}
+
+Future<void> setRepeatMode() async {
+  try {
+    await SpotifySdk.setRepeatMode(
+      repeatMode: RepeatMode.track,
+    );
+  } on PlatformException catch (e) {
+    print(e);
+  } on MissingPluginException {}
+}
+
+Future<void> seekTo() async {
+  try {
+    await SpotifySdk.seekTo(positionedMilliseconds: 20000);
+  } on PlatformException catch (e) {
+    print(e);
+  } on MissingPluginException {}
+}
+
+Future<void> seekToRelative() async {
+  try {
+    await SpotifySdk.seekToRelativePosition(relativeMilliseconds: 20000);
+  } on PlatformException catch (e) {
+    print(e);
+  } on MissingPluginException {}
+}
+
+Future<void> setShuffle(bool shuffle) async {
     try {
-      await SpotifySdk.play(spotifyUri: 'spotify:track:0nJW01T7XtvILxQgC5J7Wh');
+      await SpotifySdk.setShuffle(
+        shuffle: shuffle,
+      );
     } on PlatformException catch (e) {
       print(e);
     } on MissingPluginException {
-      
     }
   }
 
-  Future<void> pause() async {
-    try {
-      await SpotifySdk.pause();
-    } on PlatformException catch (e) {
-      print(e);
-    } on MissingPluginException {
-    }
-  }
