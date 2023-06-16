@@ -1,0 +1,10 @@
+[{
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.example.swipetune",
+      "sha256_cert_fingerprints":
+      ["6B:F4:96:A8:29:8A:D8:09:9E:97:95:0F:B8:AC:9F:03:B3:A9:43:9F:B7:CB:B3:50:0D:99:8C:71:67:1B:FD:A8"]
+    }
+  }]
+  

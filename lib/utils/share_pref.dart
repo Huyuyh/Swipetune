@@ -21,6 +21,12 @@ Future<bool> setAccountId(String value) async {
   return prefs.setString('accountId', value);
 }
 
+Future<bool> setAccessToken(String value) async {
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+  return prefs.setString('accessToken', value);
+}
+
+
 
 
 Future<String?> getAccountID() async {
@@ -28,6 +34,14 @@ Future<String?> getAccountID() async {
 
   return prefs.getString('accountId');
 }
+
+
+Future<String?> getAccessToken() async {
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+  return prefs.getString('accessToken');
+}
+
 
 Future<bool> setIsFirstOnboard(bool isFirstOnboard) async {
   final SharedPreferences prefs = await SharedPreferences.getInstance();

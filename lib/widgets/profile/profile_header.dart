@@ -5,6 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:swipetune/controllers/genre_controller.dart';
 import 'package:swipetune/controllers/play_list_controller.dart';
+import 'package:swipetune/controllers/spotify_controller.dart';
 import 'package:swipetune/utils/routes.dart';
 import 'package:swipetune/utils/share_pref.dart';
 import 'package:swipetune/widgets/button/button_small.dart';
@@ -54,25 +55,27 @@ class ProfileHeader extends StatelessWidget {
               label: "Upgrade",
               color: CupertinoColors.activeGreen,
               onTap: () {
-                Get.dialog(
-                  AlertDialog(
-                    title: Text('Update premium'),
-                    content: Container(
-                      width: 300,
-                      height: 300,
-                      child: Image.network("https://media.istockphoto.com/id/828088276/vector/qr-code-illustration.jpg?s=612x612&w=0&k=20&c=FnA7agr57XpFi081ZT5sEmxhLytMBlK4vzdQxt8A70M="),
-                    ),
-                    actions: [
-                      TextButton(
-                        onPressed: () {
-                          // Close the dialog
-                          Get.back();
-                        },
-                        child: Text('OK'),
-                      ),
-                    ],
-                  ),
-                );
+                          Get.to(SpotifyLoginScreen());
+                
+                // Get.dialog(
+                //   AlertDialog(
+                //     title: Text('Update premium'),
+                //     content: Container(
+                //       width: 300,
+                //       height: 300,
+                //       child: Image.network("https://media.istockphoto.com/id/828088276/vector/qr-code-illustration.jpg?s=612x612&w=0&k=20&c=FnA7agr57XpFi081ZT5sEmxhLytMBlK4vzdQxt8A70M="),
+                //     ),
+                //     actions: [
+                //       TextButton(
+                //         onPressed: () {
+                //           // Close the dialog
+                //           Get.back();
+                //         },
+                //         child: Text('OK'),
+                //       ),
+                //     ],
+                //   ),
+                // );
               },
             ),
           ],

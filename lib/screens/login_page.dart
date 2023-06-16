@@ -61,39 +61,38 @@ class LoginScreen extends StatelessWidget {
                     children: [
                       Logo(),
                       SizedBox(height: 20),
-                      SolidButtonLarge(label: "Sign up", color: Colors.pink,
-                      onTap: () {
-                        Get.toNamed(Routes.getSignUpRoute());
-                      },
+                      SolidButtonLarge(
+                        label: "Sign up",
+                        color: Colors.pink,
+                        onTap: () {
+                          Get.toNamed(Routes.getSignUpRoute());
+                        },
                       ),
                       SizedBox(height: 20),
                       OutlineButtonLarge(
-                        label: "Continue with phone number",
-                        color: Colors.transparent,
-                        border: Border.all(color: Colors.white),
-                        fontsize: 16,
-                        iconData: Icons.phone_android
-                      ),
+                          label: "Continue with phone number",
+                          color: Colors.transparent,
+                          border: Border.all(color: Colors.white),
+                          fontsize: 16,
+                          iconData: Icons.phone_android),
                       SizedBox(height: 20),
                       OutlineButtonLarge(
-                        label: "Continue with google",
+                        label: "Continue with spotify",
                         color: Colors.transparent,
                         border: Border.all(color: Colors.white),
                         fontsize: 16,
-                        iconData: FontAwesomeIcons.google
+                        iconData: FontAwesomeIcons.spotify,
+                        onTap: () {},
                       ),
-                      
-                      
-                       OutlineButtonLarge(
+                      OutlineButtonLarge(
                         label: "Log in",
                         color: Colors.transparent,
                         fontsize: 20,
-                         onTap: () {
-                        Get.toNamed(Routes.getSignInRoute());
-                      },
+                        onTap: () {
+                          Get.toNamed(Routes.getSignInRoute());
+                        },
                       ),
                       SizedBox(height: 20),
-
                     ],
                   ),
                 ),
