@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_web_auth/flutter_web_auth.dart';
 import 'package:get/get.dart';
 import 'package:swipetune/dao/login_dao.dart';
+import 'package:swipetune/services/spotify_service.dart';
+import 'package:swipetune/utils/constants.dart';
 import 'package:swipetune/utils/routes.dart';
 import 'package:http/http.dart' as http;
 import 'package:swipetune/utils/share_pref.dart';
@@ -32,7 +34,10 @@ class LoginController extends GetxController {
     try {
       _isLoading.value = true;
 
+      await setAccessToken(getSpotifyAccessToken('$callbackUrlScheme:/').toString());
+
       await _loginDAO.login(email, password, _isRemember.value);
+
       // Simulate successful login
       _isLoggedIn.value = true;
     } catch (e) {

@@ -36,11 +36,11 @@ class StartUpController extends GetxController {
       _isLoading.value = true;
       connectToSpotifyRemote('$callbackUrlScheme:/');
 
-      Get.put(AddPlayListController());
-      Get.toNamed(Routes.getRootRoute());
+      // Get.put(AddPlayListController());
+      Get.offAndToNamed(Routes.getRootRoute());
     } else {
       _isLoading.value = true;
-      Get.toNamed(Routes.getHomeRoute());
+      Get.offAndToNamed(Routes.getHomeRoute());
       // Get.offAll(HistoryPage());
     }
   }

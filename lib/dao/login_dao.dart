@@ -34,6 +34,7 @@ class LoginDAO {
 
       print(decode);
 
+
       if (decode["isFirstTime"]) {
         Get.put(GenreController());
         Get.toNamed(Routes.getAbout());

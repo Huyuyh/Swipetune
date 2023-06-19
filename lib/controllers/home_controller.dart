@@ -40,7 +40,7 @@ class HomeController extends GetxController {
 
   @override
   void onInit() async {
-    await setShuffle(false);
+    // await setShuffle(false);
     await fetchSong();
     super.onInit();
   }
