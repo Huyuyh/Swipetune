@@ -34,7 +34,8 @@ class LoginController extends GetxController {
     try {
       _isLoading.value = true;
 
-      await setAccessToken(getSpotifyAccessToken('$callbackUrlScheme:/').toString());
+      String accessToken = await getSpotifyAccessToken('$callbackUrlScheme:/');
+      await setAccessToken(accessToken);
 
       await _loginDAO.login(email, password, _isRemember.value);
 

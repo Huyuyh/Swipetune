@@ -55,4 +55,14 @@ class PlayListDA0 {
     }
     return false;
   }
+
+  Future syncPlayListToSpotfiy(String playListId) async {
+    String? accessToken = await getAccessToken();
+    String url = '/PlayList/SyncPlaylist/$playListId?accessToken=$accessToken';
+    try {
+      final res = await ApiService.post(url, {}, {}, {});
+    } catch (e) {
+      print(e);
+    }
+  }
 }

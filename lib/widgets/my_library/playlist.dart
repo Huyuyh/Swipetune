@@ -92,7 +92,32 @@ class _PlayListState extends State<PlayList> {
                 ),
                 Container(
                   child: widget.isAdd == null
-                      ? Icon(Icons.more_vert)
+                      ? GestureDetector(
+                          onTap: () {
+                            Get.dialog(
+                              AlertDialog(
+                                // title: const Text('Dialog'),
+                                content: GestureDetector(
+                                  onTap: () {
+                                    _controller.syncPlayListToSpotfiy(
+                                        widget.playlist.playlistId.toString());
+                                  },
+                                  child: Container(
+                                    padding: EdgeInsets.all(20),
+                                    decoration: BoxDecoration(
+                                        color: Color(0xffFF7D87),
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(10))),
+                                    child: Text(
+                                      "Sync to spotify",
+                                      style: TextStyle(color: Colors.white),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
+                          child: Icon(Icons.more_vert))
                       : isAdded == true
                           ? Icon(
                               Icons.check_circle,

@@ -13,8 +13,15 @@ class StartUpController extends GetxController {
   bool get isLoading => _isLoading.value;
 
   StartUpController() {
-    pause();
+    checkAuthen();
     handleStartUpLogic();
+  }
+
+  Future checkAuthen() async {
+    String? accessToken = await getAccessToken();
+    if (accessToken != null) {
+      pause();
+    }
   }
 
   Future handleStartUpLogic() async {
@@ -32,7 +39,7 @@ class StartUpController extends GetxController {
     //   Get.toNamed(Routes.getAbout());
     // }
     // else
-     if (hasLoggedInUser) {
+    if (hasLoggedInUser) {
       _isLoading.value = true;
       connectToSpotifyRemote('$callbackUrlScheme:/');
 

@@ -1,6 +1,7 @@
 
 
 import 'package:get/get.dart';
+import 'package:swipetune/dao/play_list_dao.dart';
 import 'package:swipetune/models/play_list_model.dart';
 
 class AddPlayListController extends GetxController {
@@ -9,6 +10,8 @@ class AddPlayListController extends GetxController {
   List<String> get listPlayListCheck => _listPlayListCheck.value;
 
   bool isPlayListAdded(String listId) => _listPlayListCheck.contains(listId);
+
+  PlayListDA0 dao = PlayListDA0();
 
   void togglePlayList(String? listId) {
     if (_listPlayListCheck.contains(listId)) {
@@ -24,5 +27,13 @@ class AddPlayListController extends GetxController {
 
   void setEmptyList() {
     _listPlayListCheck.value = [];
+  }
+
+  Future syncPlayListToSpotfiy(String playListId) async {
+    try {
+      await dao.syncPlayListToSpotfiy(playListId);
+    } catch (e) {
+      print(e);
+    }
   }
 }
