@@ -21,13 +21,23 @@ Future<bool> setAccountId(String value) async {
   return prefs.setString('accountId', value);
 }
 
+Future<bool> setPremiumAccount(String value) async {
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+  
+  return prefs.setString('premium', value);
+}
+
 Future<bool> setAccessToken(String value) async {
   final SharedPreferences prefs = await SharedPreferences.getInstance();
   return prefs.setString('accessToken', value);
 }
 
 
+Future<String?> getPremiumAccount() async {
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
 
+  return prefs.getString('premium');
+}
 
 Future<String?> getAccountID() async {
   final SharedPreferences prefs = await SharedPreferences.getInstance();

@@ -43,6 +43,9 @@ class LoginDAO {
         return;
       } else {
         setAccountId(decode["Id"]);
+        if(decode["Subscription Name"] == "PREMIUM"){
+          setPremiumAccount("PREMIUM");
+        }
         Get.toNamed(Routes.getStartUp());
       }
 
