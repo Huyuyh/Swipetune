@@ -5,6 +5,7 @@ import 'package:appinio_swiper/appinio_swiper.dart';
 import 'package:get/get.dart';
 import 'package:swipetune/controllers/home_controller.dart';
 import 'package:swipetune/services/spotify_service.dart';
+import 'package:swipetune/utils/share_pref.dart';
 import 'package:swipetune/widgets/swipe_button/swipe_button.dart';
 import 'package:swipetune/widgets/swipe_card/swipe_card.dart';
 
@@ -30,6 +31,7 @@ class SwipeTest extends StatelessWidget {
               height: MediaQuery.of(context).size.height * 0.8,
               child: AppinioSwiper(
                 unlimitedUnswipe: true,
+                allowUnswipe: (homeController.premiumAccount.isEmpty) ? false : true,
                 controller: controller,
                 unswipe: _unswipe,
                 onSwiping: (AppinioSwiperDirection direction) {
@@ -58,7 +60,7 @@ class SwipeTest extends StatelessWidget {
                 const SizedBox(
                   width: 20,
                 ),
-                swipeLeftButton(controller),
+                // swipeLeftButton(controller),
                 // const SizedBox(
                 //   width: 20,
                 // ),
@@ -81,7 +83,8 @@ class SwipeTest extends StatelessWidget {
     );
   }
 
-  void _swipe(int index, AppinioSwiperDirection direction) {
+  void _swipe(int index, AppinioSwiperDirection direction) async {
+    String? premium = await getPremiumAccount();
     if (index ==
         homeController.songModels.indexOf(homeController.songModels.last)) {
       homeController.fetchNewSong();

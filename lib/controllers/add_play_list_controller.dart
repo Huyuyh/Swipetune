@@ -1,6 +1,7 @@
-
-
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:swipetune/controllers/home_controller.dart';
+import 'package:swipetune/controllers/play_list_controller.dart';
 import 'package:swipetune/dao/play_list_dao.dart';
 import 'package:swipetune/models/play_list_model.dart';
 
@@ -31,7 +32,26 @@ class AddPlayListController extends GetxController {
 
   Future syncPlayListToSpotfiy(String playListId) async {
     try {
-      await dao.syncPlayListToSpotfiy(playListId);
+      final premium = await Get.find<HomeController>().premiumAccount;
+      if (premium == "") {
+        Get.dialog(
+          AlertDialog(
+            title: Text('Premium'),
+            content: Text(
+                'You need to upgrage account to premium to sync playlist to Spotify'),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Get.back();
+                },
+                child: Text('OK'),
+              ),
+            ],
+          ),
+        );
+      } else {
+        await dao.syncPlayListToSpotfiy(playListId);
+      }
     } catch (e) {
       print(e);
     }

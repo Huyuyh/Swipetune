@@ -19,6 +19,7 @@ import 'package:swipetune/utils/data.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:spotify_sdk/models/player_state.dart';
 import 'package:spotify_sdk/spotify_sdk.dart';
+import 'package:swipetune/utils/share_pref.dart';
 import 'package:swipetune/widgets/bottom_sheet/bottom_sheet_create_playlist.dart';
 import 'package:just_audio/just_audio.dart';
 
@@ -33,8 +34,11 @@ class HomeController extends GetxController {
 
   final SongDAO songDAO = SongDAO();
 
+  final _premiumAccount = "".obs;
+
   bool get isLoading => _isLoading.value;
   bool get isPause => _isPause.value;
+  String get premiumAccount => _premiumAccount.value;
 
   SongModel get currentSong => _currentSong.value;
 
@@ -50,13 +54,12 @@ class HomeController extends GetxController {
     super.onClose();
   }
 
-
-  
+  Future setPremium() async {}
 
   // New Swipe card
 
   void setPause(bool value) {
-    if(value == true){
+    if (value == true) {
       pause();
     }
     _isPause.value = value;
@@ -88,6 +91,8 @@ class HomeController extends GetxController {
     try {
       songModels = (await songDAO.getListSongRecommend())!;
       _currentSong.value = songModels.first;
+      _premiumAccount.value = (await getPremiumAccount() == null) ? "" : (await getPremiumAccount())!;
+
 
       // for (var element in songModels) {
       //   addQueue(element.songId.toString());
@@ -104,6 +109,4 @@ class HomeController extends GetxController {
       _isLoading.value = false;
     }
   }
-
-
 }
