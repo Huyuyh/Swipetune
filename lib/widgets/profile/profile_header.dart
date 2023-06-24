@@ -21,7 +21,6 @@ class ProfileHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Container(
         child: Column(
       children: [
@@ -61,24 +60,52 @@ class ProfileHeader extends StatelessWidget {
               color: CupertinoColors.activeGreen,
               onTap: () {
                 Get.dialog(
-                  
                   AlertDialog(
                     title: Text('Update premium'),
                     content: Container(
-                      width: 300,
-                      height: 300,
-                      child: Image.asset(
-                          "assets/images/QR_payment.png"),
-                    ),
-                    actions: [
-                      TextButton(
-                        onPressed: () {
-                          // Close the dialog
-                          Get.back();
-                        },
-                        child: Text('OK'),
+                      width: 350,
+                      height: 350,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            width: 260,
+                            height: 260,
+                            child: Image.asset("assets/images/QR_payment.png"),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            "Payment content: ",
+                            style: TextStyle(),
+                          ),
+                          Text(
+                            "update_premium_youremail",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Text(
+                            "Price: ",
+                            style: TextStyle(),
+                          ),
+                          Text(
+                            "25.000 Vnd/Month",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ],
                       ),
-                    ],
+                    ),
+                    // actions: [
+                    //   TextButton(
+                    //     onPressed: () {
+                    //       // Close the dialog
+                    //       Get.back();
+                    //     },
+                    //     child: Text('OK'),
+                    //   ),
+                    // ],
                   ),
                 );
               },

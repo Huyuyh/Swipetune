@@ -33,7 +33,7 @@ Widget swipeRightButton(HomeController homeController) {
       height: 60,
       width: 60,
       decoration: BoxDecoration(
-        color: CupertinoColors.activeBlue,
+        color: Color(0xff31C9CE),
         borderRadius: BorderRadius.circular(50),
         boxShadow: [
           BoxShadow(
@@ -62,10 +62,10 @@ Widget swipePlayButton(HomeController homeController) {
       homeController.setPause(true);
     },
     child: Container(
-      height: 60,
-      width: 60,
+      height: homeController.premiumAccount.isNotEmpty ? 70 : 60,
+      width: homeController.premiumAccount.isNotEmpty ? 70 : 60,
       decoration: BoxDecoration(
-        color: CupertinoColors.activeBlue,
+        color: Color(0xffFF7D87),
         borderRadius: BorderRadius.circular(50),
         boxShadow: [
           BoxShadow(
@@ -89,17 +89,15 @@ Widget swipePlayButton(HomeController homeController) {
 Widget swipePauseButton(HomeController homeController) {
   return ExampleButton(
     onTap: () async {
-
       await playMusic(homeController.currentSong.songId.toString());
       homeController.setPause(false);
       // await setRepeatMode();
-
     },
     child: Container(
-      height: 60,
-      width: 60,
+      height: homeController.premiumAccount.isNotEmpty ? 70 : 60,
+      width: homeController.premiumAccount.isNotEmpty ? 70 : 60,
       decoration: BoxDecoration(
-        color: CupertinoColors.activeBlue,
+        color: Color(0xffFF7D87),
         borderRadius: BorderRadius.circular(50),
         boxShadow: [
           BoxShadow(
@@ -128,7 +126,7 @@ Widget swipeLeftButton(AppinioSwiperController controller) {
       height: 60,
       width: 60,
       decoration: BoxDecoration(
-        color: CupertinoColors.activeOrange,
+        color: Color(0xff31C9CE),
         borderRadius: BorderRadius.circular(50),
         boxShadow: [
           BoxShadow(
