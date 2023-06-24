@@ -95,6 +95,8 @@ flutter:
     - assets/images/song_image.png
     - assets/images/song_1_image.png
     - assets/images/song_theme.png
+    - assets/images/QR_payment.png
+    - assets/images/avatar_1.png
 
 
 

@@ -13,16 +13,22 @@ class StartUpController extends GetxController {
   bool get isLoading => _isLoading.value;
 
   StartUpController() {
-    checkAuthen();
+      pause();
     handleStartUpLogic();
   }
 
   Future checkAuthen() async {
     String? accessToken = await getAccessToken();
     if (accessToken != null) {
-      pause();
     }
   }
+
+  // Future<bool> isUserLoggedIn() async {
+  //   final isExpireToken = await expireToken();
+  //   if (isExpireToken) return false;
+
+  //   return true;
+  // }
 
   Future handleStartUpLogic() async {
     LoginDAO _loginDAO = LoginDAO();
@@ -44,7 +50,7 @@ class StartUpController extends GetxController {
       connectToSpotifyRemote('$callbackUrlScheme:/');
 
       // Get.put(AddPlayListController());
-      Get.offAndToNamed(Routes.getRootRoute());
+      Get.toNamed(Routes.getRootRoute());
     } else {
       _isLoading.value = true;
       Get.offAndToNamed(Routes.getHomeRoute());

@@ -11,9 +11,9 @@ import 'package:swipetune/utils/share_pref.dart';
 
 class LoginDAO {
   Future<bool> isUserLoggedIn() async {
-    // final isExpireToken = await expireAccount();
+    final isExpireToken = await expireAccount();
     final accountId = await getAccountID();
-    // if (isExpireToken) return false;
+    if (isExpireToken) return false;
     if (accountId == null) {
       return false;
       // setAccountId(accountId);

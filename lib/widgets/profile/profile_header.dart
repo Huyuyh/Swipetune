@@ -4,6 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:swipetune/controllers/genre_controller.dart';
+import 'package:swipetune/controllers/home_controller.dart';
 import 'package:swipetune/controllers/play_list_controller.dart';
 import 'package:swipetune/controllers/spotify_controller.dart';
 import 'package:swipetune/services/spotify_service.dart';
@@ -16,9 +17,11 @@ class ProfileHeader extends StatelessWidget {
   ProfileHeader({super.key});
 
   final PlayListController playListController = Get.find<PlayListController>();
+  final HomeController homeController = Get.find<HomeController>();
 
   @override
   Widget build(BuildContext context) {
+
     return Container(
         child: Column(
       children: [
@@ -52,18 +55,20 @@ class ProfileHeader extends StatelessWidget {
                 Get.toNamed(Routes.getSelectGenre());
               },
             ),
+            // if (homeController.premiumAccount.isEmpty)
             SolidButtonSmall(
               label: "Upgrade",
               color: CupertinoColors.activeGreen,
               onTap: () {
                 Get.dialog(
+                  
                   AlertDialog(
                     title: Text('Update premium'),
                     content: Container(
                       width: 300,
                       height: 300,
-                      child: Image.network(
-                          "https://media.istockphoto.com/id/828088276/vector/qr-code-illustration.jpg?s=612x612&w=0&k=20&c=FnA7agr57XpFi081ZT5sEmxhLytMBlK4vzdQxt8A70M="),
+                      child: Image.asset(
+                          "assets/images/QR_payment.png"),
                     ),
                     actions: [
                       TextButton(
@@ -89,7 +94,7 @@ class ProfileHeader extends StatelessWidget {
           onTap: () {
             removeALL();
             pause();
-            disconnectSpotify();
+            // disconnectSpotify();
             Get.offAllNamed(Routes.getHomeRoute());
           },
         ),

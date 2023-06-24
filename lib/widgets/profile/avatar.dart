@@ -13,7 +13,7 @@ class Avatar extends StatelessWidget {
         width: 122,
         height: 122,
         child: CircleAvatar(
-          backgroundImage: AssetImage("assets/images/avatar.png"),
+          backgroundImage: AssetImage("assets/images/avatar_1.png"),
         ),
       ),
     );

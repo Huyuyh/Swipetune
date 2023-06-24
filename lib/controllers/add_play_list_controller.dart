@@ -51,6 +51,16 @@ class AddPlayListController extends GetxController {
         );
       } else {
         await dao.syncPlayListToSpotfiy(playListId);
+        Get.back();
+
+        Get.snackbar(
+          'Success',
+          'Playlist sync to spotify successfully.',
+          duration: Duration(seconds: 2),
+          snackPosition: SnackPosition.TOP,
+          backgroundColor: Color(0xffFF7D87),
+          colorText: Colors.white,
+        );
       }
     } catch (e) {
       print(e);

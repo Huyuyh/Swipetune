@@ -60,10 +60,9 @@ class SwipeTest extends StatelessWidget {
                 const SizedBox(
                   width: 20,
                 ),
-                // swipeLeftButton(controller),
-                // const SizedBox(
-                //   width: 20,
-                // ),
+                if (homeController.premiumAccount.isNotEmpty) swipeLeftButton(controller),
+      
+                
                 if (homeController.isPause) ...[
                   swipePauseButton(homeController),
                 ] else ...[

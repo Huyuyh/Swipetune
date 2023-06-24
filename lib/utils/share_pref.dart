@@ -5,8 +5,12 @@ import 'package:intl/intl.dart';
 Future<bool> expireAccount() async {
   try {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    DateTime tempDate = new DateFormat("yyyy-MM-dd hh:mm:ss")
+    DateTime tempDate = new DateFormat("yyyy-MM-dd hh:mm:ss a")
         .parse(prefs.getString('expireDate')!);
+    // DateTime now = new DateFormat("yyyy-MM-dd hh:mm:ss")
+    //     .parse(DateFormat("yyyy-MM-dd hh:mm:ss a").format(DateTime.now()));
+    print(tempDate );
+    print(DateTime.now());
     return tempDate.compareTo(DateTime.now()) < 0;
   } catch (e) {
     return true;
@@ -23,15 +27,17 @@ Future<bool> setAccountId(String value) async {
 
 Future<bool> setPremiumAccount(String value) async {
   final SharedPreferences prefs = await SharedPreferences.getInstance();
-  
+
   return prefs.setString('premium', value);
 }
 
 Future<bool> setAccessToken(String value) async {
   final SharedPreferences prefs = await SharedPreferences.getInstance();
+  String expireDate = DateFormat("yyyy-MM-dd hh:mm:ss a")
+      .format(DateTime.now().add(Duration(hours: 1)));
+  prefs.setString('expireDate', expireDate.toString());
   return prefs.setString('accessToken', value);
 }
-
 
 Future<String?> getPremiumAccount() async {
   final SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -45,13 +51,11 @@ Future<String?> getAccountID() async {
   return prefs.getString('accountId');
 }
 
-
 Future<String?> getAccessToken() async {
   final SharedPreferences prefs = await SharedPreferences.getInstance();
 
   return prefs.getString('accessToken');
 }
-
 
 Future<bool> setIsFirstOnboard(bool isFirstOnboard) async {
   final SharedPreferences prefs = await SharedPreferences.getInstance();

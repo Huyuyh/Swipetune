@@ -41,13 +41,13 @@ Future<String> getSpotifyAccessToken(String redirectUrl) async {
 
 Future<void> playMusic(String id) async {
   try {
-    final playerState = await SpotifySdk.getPlayerState();
+    // final playerState = await SpotifySdk.getPlayerState();
   
 
-    if (playerState != null && playerState.track != null && playerState.track!.uri == 'spotify:track:$id') {
-      // If the current track is already playing, do nothing
-      return;
-    }
+    // if (playerState != null && playerState.track != null && playerState.track!.uri == 'spotify:track:$id') {
+    //   // If the current track is already playing, do nothing
+    //   return;
+    // }
     await SpotifySdk.play(spotifyUri: 'spotify:track:$id');
   } on PlatformException catch (e) {
     print(e);
