@@ -50,7 +50,7 @@ class StartUpController extends GetxController {
       connectToSpotifyRemote('$callbackUrlScheme:/');
 
       // Get.put(AddPlayListController());
-      Get.toNamed(Routes.getRootRoute());
+      Get.offAndToNamed(Routes.getRootRoute());
     } else {
       _isLoading.value = true;
       Get.offAndToNamed(Routes.getHomeRoute());

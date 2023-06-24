@@ -9,6 +9,7 @@ import 'package:swipetune/screens/my_library.dart';
 import 'package:swipetune/screens/playlist_detail.dart';
 import 'package:swipetune/screens/profile_page.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:swipetune/services/spotify_service.dart';
 
 class RootScreen extends StatelessWidget {
   final int? initPage;

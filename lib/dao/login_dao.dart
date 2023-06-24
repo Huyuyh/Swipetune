@@ -46,7 +46,7 @@ class LoginDAO {
         if(decode["Subscription Name"] == "PREMIUM"){
           setPremiumAccount("PREMIUM");
         }
-        Get.toNamed(Routes.getStartUp());
+        Get.offAndToNamed(Routes.getStartUp());
       }
 
       // setIsFirstOnboard(decode["isFirstTime"]);

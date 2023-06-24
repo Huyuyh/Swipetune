@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:swipetune/controllers/life_cycle_controller.dart';
 import 'package:swipetune/utils/constants.dart';
 import 'package:swipetune/utils/routes.dart';
 // import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 void main() async {
   // await dotenv.load(fileName: '.env');
+  Get.put(LifeCycleController());
   runApp(const MyApp());
 }
 
